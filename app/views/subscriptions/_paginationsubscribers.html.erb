@@ -1,0 +1,18 @@
+<table class='table table-striped' id="account_table_admin">
+  <thead>
+    <tr>
+      <th><span class="glyphicon glyphicon-paperclip"></span> Account Name</th>
+      <th><span class="glyphicon glyphicon-time"></span></th>
+      <th><span class="glyphicon glyphicon-edit"></span> </th>
+      <th><span class="glyphicon glyphicon-trash"></span></th>
+      <th><span class="glyphicon glyphicon-plus"></span></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= render 'subscribers' %>  
+  </tbody>
+</table>
+
+<div id='pagination_div'>
+  <%=will_paginate @Subscriptions %>
+</div>

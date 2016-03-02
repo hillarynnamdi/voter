@@ -1,0 +1,15 @@
+     <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td><%= subscription.account_name %></td>
+        <td><%= subscription.created_at.strftime("%d %B %Y") %></td>
+        <td><%= link_to 'Edit' ,edit_subscription_path(subscription),remote: true, class:'btn btn-info' %>
+        </td>
+        <td><%= link_to 'Delete', subscription_path(subscription), method: :DELETE, remote: true,class:"btn btn-danger",data: {confirm: 'Are You Sure You Want To Delete Subscription' } %></td>
+
+        <td><%= link_to 'Add', subscription_add_students_path(subscription), class:"btn btn-success" %></td>
+      </tr>
+
+
+      <% end %>
+
+      
