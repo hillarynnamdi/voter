@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :students
    resources :subscriptions do
     get "add_students"
   end

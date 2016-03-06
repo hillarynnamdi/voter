@@ -29,6 +29,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+#gem 'two_factor_authentication'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -38,6 +40,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap'
 gem 'chartkick'
 gem 'groupdate'
+gem 'devise-authy'
+gem 'figaro'
 
 
 group :development, :test do
