@@ -1,0 +1,15 @@
+$("ul.errors").html("")
+<% if @user.errors.any? %>
+
+   <% @user.errors.full_messages.each do |msg| %>
+
+      $("ul.errors").append($("<li />").html("<%= msg.html_safe %>"))
+
+    <% end %>
+<% else %>
+
+ $(".render-ajax").html("<%= escape_javascript(render partial:"paginationusers",object:@user) %>")
+
+ $("#subscription-modal").modal("hide")
+
+<% end %>

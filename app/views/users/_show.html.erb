@@ -1,0 +1,56 @@
+<div class="modal-dialog">
+
+  <div class="modal-content">
+
+    <%= form_for :user, url:subscription_user_path(@subscription,@user), method: :patch,remote:true do |f| %>
+      <div class="modal-body">
+
+<div class="row">
+  <div class="col-sm-12">
+        <ul class="errors"></ul>
+
+  </div>
+  </div>
+
+        <div class="form-group">
+          <div id='acct_style'>First Name:</div>
+      <%= f.text_field :first_name, class: "form-control",disabled:'disabled' %>
+
+        </div>
+
+         <div class="form-group">
+          <div id='acct_style'>Last Name:</div>
+      <%= f.text_field :last_name, class: "form-control" ,disabled:'disabled'%>
+
+        </div>
+
+
+         <div class="form-group">
+<div class="row">
+  <div class="col-sm-6">
+        <%= f.radio_button :gender, "Male",disabled:'disabled' %> Male</div> <div class="col-sm-6"><%= f.radio_button :gender, "Female",disabled:'disabled' %> Female</div>
+
+</div>
+</div>
+
+        <div class="form-group">
+          <div id='acct_style'>Reg Number:</div>
+      <%= f.text_field :reg_no, class: "form-control",disabled:'disabled' %>
+
+        </div>
+
+        <div class="form-group">
+          <div id='acct_style'>Phone Number:</div>
+      <%= f.text_area :phone_no, class: "form-control",disabled:'disabled' %>
+
+        </div>
+
+ 
+
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
+    <% end %>
+  </div>
+</div>

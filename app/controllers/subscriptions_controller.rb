@@ -40,11 +40,16 @@ class SubscriptionsController < ApplicationController
 
       @subscription.update(subscription_params)
 
+      respond_to do |format|
+format.js{}
+
+      end
+
   end
 
   # DELETE /subscriptions/1
-  # DELETE /subscriptions/1.json
 
+  # DELETE /subscriptions/1.json
   def destroy
     @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
     @subscription = Subscription.find(params[:id])
@@ -56,10 +61,13 @@ format.js{}
  end
   end
 
-  def add_students
-
-
+  def add
+@subscription = Subscription.find(params[:subscription_id])
   end
+
+def aspirants
+@subscription = Subscription.find(params[:subscription_id])
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

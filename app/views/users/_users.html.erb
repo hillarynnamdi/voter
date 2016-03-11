@@ -1,0 +1,29 @@
+     <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td> <%= user.last_name %></td>
+        <td> <%= user.gender %></td>
+        <td><%= user.reg_no %></td>
+        <td><%= user.phone_no %></td>
+        <td><%= link_to subscription_user_path(@subscription,user),remote: true, class:'btn btn-success' do %>
+            <span class="glyphicon glyphicon-plus"></span>
+        <%end%>
+        </td>
+        <td>
+        <%= link_to  edit_subscription_user_path(@subscription,user),remote: true, class:'btn btn-primary' do  %>
+              <span class="glyphicon glyphicon-pencil"></span>
+          <%end%>
+        </td>
+        <td>
+
+        <%= link_to subscription_user_path(@subscription,user), method: :DELETE, remote: true, class:"btn btn-danger",data: {confirm: 'Are You Sure You Want To Delete User?' }  do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <%end%>
+          
+        </td>
+
+      </tr>
+
+
+      <% end %>
+

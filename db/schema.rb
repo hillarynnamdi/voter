@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226233951) do
+ActiveRecord::Schema.define(version: 20160311163955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,55 @@ ActiveRecord::Schema.define(version: 20160226233951) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
+  create_table "aspirants", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "political_ambition"
+    t.integer  "subscription_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image"
+    t.string   "position"
+    t.string   "statement"
+  end
+
+  add_index "aspirants", ["subscription_id"], name: "index_aspirants_on_subscription_id", using: :btree
+
   create_table "subscriptions", force: :cascade do |t|
     t.string   "account_name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "reg_no"
+    t.string   "phone_no"
+    t.integer  "subscription_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password"
+  end
+
+  add_index "users", ["subscription_id"], name: "index_users_on_subscription_id", using: :btree
+
+  create_table "vote_rs", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "reg_no"
+    t.string   "phone_no"
+    t.integer  "subscription_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "vote_rs", ["subscription_id"], name: "index_vote_rs_on_subscription_id", using: :btree
+
+  add_foreign_key "aspirants", "subscriptions"
+  add_foreign_key "users", "subscriptions"
+  add_foreign_key "vote_rs", "subscriptions"
 end

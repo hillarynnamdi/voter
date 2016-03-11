@@ -1,0 +1,30 @@
+     <% @aspirants.each do |aspirant| %>
+      <tr>
+      <td><% if aspirant.image? %>
+          <div><span><%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"80", height:"80"%></span>
+          </div>
+          <% else %>
+<span class="glyphicon glyphicon-user">
+          <% end %></td>
+        <td><%= aspirant.first_name %></td>
+        <td> <%= aspirant.last_name %></td>
+        <td><%= aspirant.gender %></td>
+        <td><%= aspirant.position %></td>
+        <td><%= link_to subscription_aspirant_path(@subscription,aspirant),remote: true, class:'btn btn-success' do %>
+            <span class="glyphicon glyphicon-plus"></span>
+        <%end%>
+        </td>
+        <td>
+        <%= link_to  edit_subscription_aspirant_path(@subscription,aspirant),remote: true, class:'btn btn-primary' do  %>
+              <span class="glyphicon glyphicon-pencil"></span>
+          <%end%>
+        </td>
+        <td><%= link_to subscription_aspirant_path(@subscription,aspirant), method: :DELETE, remote: true, class:"btn btn-danger",data: {confirm: 'Are You Sure You Want To Delete Aspirant?' }  do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%end%>
+        </td>
+
+      </tr>
+
+
+      <% end %>

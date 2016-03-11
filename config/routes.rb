@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 
 
    resources :subscriptions do
-    get "add_students"
+    resources :aspirants
+    resources :users
+    get "add"
+
+
   end
+
 
   devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.

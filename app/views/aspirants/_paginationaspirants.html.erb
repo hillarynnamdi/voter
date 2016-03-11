@@ -1,0 +1,21 @@
+<table class='table table-striped' id="account_table_admin">
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th> First Name</th>
+      <th> Last Name</th>
+      <th>Gender</th>
+      <th>Post</span></th>
+      <th>More</th>
+      <th>Edit</span></th>
+      <th>Delete</span></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= render 'aspirants' %>  
+  </tbody>
+</table>
+
+<div id='pagination_div'>
+  <%=will_paginate @aspirants,renderer: BootstrapPagination::Rails %>
+</div>
