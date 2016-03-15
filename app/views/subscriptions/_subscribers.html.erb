@@ -1,15 +1,24 @@
      <% @subscriptions.each do |subscription| %>
       <tr>
         <td><span class="glyphicon glyphicon-tag"></span> <%= subscription.account_name %></td>
-        <td><%= subscription.created_at.strftime("%d %B %Y") %></td>
-        <td><%= link_to 'Edit', edit_subscription_path(subscription),remote: true, class:'btn btn-info' %>
+        <td><span class="glyphicon glyphicon-time"></span> <%= subscription.created_at.strftime("%d %B %Y") %></td>
+        <td>
+          <%= link_to  edit_subscription_path(subscription),remote: true, class:'btn btn-primary' do  %>
+              <span class="glyphicon glyphicon-pencil"></span>
+          <%end%>
         </td>
-        <td><%= link_to 'Delete', subscription_path(subscription), method: :DELETE, remote: true, class:"btn btn-danger",data: {confirm: 'Are You Sure You Want To Delete Subscription' } %></td>
+        <td>
+          <%= link_to subscription_path(subscription), method: :DELETE, remote: true, class:"btn btn-danger",data: {confirm: 'Are You Sure You Want To Delete Subscription?' }  do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%end%>
+        </td>
 
-        <td><%= link_to 'Add', subscription_add_path(subscription), remote: true, class:"btn btn-success" %></td>
+        <td>
+        <%= link_to subscription_add_path(subscription),remote: true, class:'btn btn-success' do %>
+            <span class="glyphicon glyphicon-plus"></span>
+        <%end%>
+        </td>
       </tr>
 
 
       <% end %>
-
-      

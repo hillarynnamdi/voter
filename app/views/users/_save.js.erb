@@ -8,7 +8,7 @@ $("ul.errors").html("")
     <% end %>
 <% else %>
 
- $(".render-ajax").html("<%= escape_javascript(render partial:"paginationusers",object:@user) %>")
+ $(".render-ajax").html("<%= escape_javascript(render partial:"paginationusers",object:@users) %>")
 
  $("#subscription-modal").modal("hide")
 
