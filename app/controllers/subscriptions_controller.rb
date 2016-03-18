@@ -4,10 +4,17 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:show, :edit, :update, :destroy, :delete]
   # GET /subscriptions
   # GET /subscriptions.json
+
   def index
-    @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
     
- end
+    if params[:search]
+      @subscriptions =Subscription.where("account_name LIKE '#{params[:search]}%' ").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+    
+    else
+    @subscriptions=pagination
+     
+    end
+  end
 
   # GET /subscriptions/1
   # GET /subscriptions/1.json
@@ -30,23 +37,20 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     @subscription.save
 
-        @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
-      
+        @subscriptions=pagination
+
   end
 
   # PATCH/PUT /subscriptions/1
   # PATCH/PUT /subscriptions/1.json
   def update
   
-     @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+     
       @subscription = Subscription.find(params[:id])
 
       @subscription.update(subscription_params)
-
-      respond_to do |format|
-format.js{}
-
-      end
+      @subscriptions = pagination
+      
 
   end
 
@@ -54,14 +58,10 @@ format.js{}
 
   # DELETE /subscriptions/1.json
   def destroy
-    @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
     @subscription = Subscription.find(params[:id])
    @subscription.destroy
+   @subscriptions=pagination
 
-   respond_to do|format|
-
-format.js{}
- end
   end
 
   def add
@@ -82,4 +82,8 @@ end
     def subscription_params
       params.require(:subscription).permit(:account_name)
     end
+
+  def pagination
+    @subscriptions ||= Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  end
 end

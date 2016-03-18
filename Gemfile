@@ -66,3 +66,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart', '~> 1.2'
 
+gem 'sms_sender', '~> 0.0.4'
+

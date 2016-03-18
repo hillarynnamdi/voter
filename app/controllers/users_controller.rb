@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 	  def create
     @subscription = Subscription.find(params[:subscription_id])
     @user = @subscription.users.create(user_params)
-	@users =@subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
-
+	   @users =pagination
 
     
   end
@@ -18,14 +17,12 @@ class UsersController < ApplicationController
  
 
   def index
-
-
   	@subscription = Subscription.find(params[:subscription_id])
   	if params[:search]
-  	  @users =@subscription.users.where("first_name LIKE '#{params[:search]}%' or last_name LIKE '%#{params[:search]}%' or phone_no LIKE '%#{params[:search]}%' or reg_no LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  	  @users =@subscription.users.where("first_name LIKE '#{params[:search]}%' or last_name LIKE '#{params[:search]}%' or phone_no LIKE '#{params[:search].to_s}%' or reg_no LIKE '#{params[:search].to_s}%'").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
     
     else
-   	 @users =@subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+   	 @users =pagination
   	 
 end
 
@@ -33,16 +30,16 @@ end
 
     def edit
   	@subscription = Subscription.find(params[:subscription_id])
-	@user = @subscription.users.find(params[:id])
+	   @user = @subscription.users.find(params[:id])
 
 
   end
 
     def update
+      @subscription = Subscription.find(params[:subscription_id])
  @user = User.find(params[:id])
  @user.update(user_params)
-@subscription = Subscription.find(params[:subscription_id])
-  @users =@subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  @users = pagination
     
  
 end
@@ -51,7 +48,7 @@ end
 @subscription = Subscription.find(params[:subscription_id])
 @user = @subscription.users.find(params[:id])
 @user.destroy
-@users =@subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+@users = pagination
 
   end
 
@@ -63,6 +60,12 @@ end
 
 def user_params
       params.require(:user).permit(:first_name, :last_name, :gender, :reg_no,:phone_no,:password)
+    end
+
+
+    def pagination
+  @users||= @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+
     end
 
 end

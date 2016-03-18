@@ -10,7 +10,8 @@ class AspirantsController < ApplicationController
 	  def create
     @subscription = Subscription.find(params[:subscription_id])
     @aspirant = @subscription.aspirants.create(aspirant_params)
-@aspirants =@subscription.aspirants.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+    @aspirants=pagination
+
     
   end
 
@@ -22,7 +23,7 @@ class AspirantsController < ApplicationController
   	  @aspirants =@subscription.aspirants.where("position LIKE '#{params[:search]}%' ").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
     
     else
-   	 @aspirants =@subscription.aspirants.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+   	@aspirants=pagination
   	 
 end
 
@@ -44,7 +45,7 @@ end
 @subscription = Subscription.find(params[:subscription_id])
 @aspirant = @subscription.aspirants.find(params[:id])
 @aspirant.destroy
-@aspirants =@subscription.aspirants.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+@aspirants=pagination
 
   end
 
@@ -52,7 +53,7 @@ end
  @aspirant = Aspirant.find(params[:id])
  @aspirant.update(aspirant_params)
 @subscription = Subscription.find(params[:subscription_id])
-  @aspirants =@subscription.aspirants.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+@aspirants=pagination
     
  
 end
@@ -60,6 +61,11 @@ end
   private
     def aspirant_params
       params.require(:aspirant).permit(:first_name, :last_name, :gender, :image,:position,:statement)
+    end
+
+    def pagination
+    @aspirants ||=@subscription.aspirants.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+
     end
 
 end

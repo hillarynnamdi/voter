@@ -1,16 +1,12 @@
-$(document).ready(
-function(){
-	$("#search").focus()
-	$("#search").keyup(function(){
+
+$(document).on('keyup','#search',function(){
 var trimming=$(this).val().trimLeft().toUpperCase()
 $(this).val(trimming)
-		
+		$(".render-ajax").html("<div style='margin:auto,width:60%;text-align:center;padding:20px;color:black'>Loading...</div>")
 		$(this).parent().submit();
 	}
 	)
-}
-	)
-
+	
 
 
 
@@ -23,7 +19,6 @@ return false
 
 }
 )	
-
 
 
 

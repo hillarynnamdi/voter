@@ -1,3 +1,4 @@
+<div class='wrapper'>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
@@ -30,7 +31,7 @@
   <div class="col-sm-12">
 
   <div class="form-group">
-  <label for="usr">Search <u><%= @subscription.account_name %></u> Voters by First Name or Reg No:</label>
+  <label for="usr">Search <u><%= @subscription.account_name %></u> Voters by First Name(or Last Name or Reg No):</label>
   <%= form_tag subscription_users_path,method: :get,remote:true do  %>
      <div class="input-group input-group-lg">
      <span class="input-group-addon">
@@ -67,3 +68,5 @@
 <footer class="container-fluid text-center">
   <p></p>
 </footer>
+
+</div>
