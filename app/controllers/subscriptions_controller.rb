@@ -1,11 +1,13 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: [:show, :edit, :update, :destroy, :delete]
 
+
+  before_action :set_subscription, only: [:show, :edit, :update, :destroy, :delete]
   # GET /subscriptions
   # GET /subscriptions.json
   def index
     @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
-  end
+    
+ end
 
   # GET /subscriptions/1
   # GET /subscriptions/1.json
@@ -26,9 +28,10 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions.json
   def create
     @subscription = Subscription.new(subscription_params)
+    @subscription.save
 
-       @subscription.save
         @subscriptions = Subscription.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+      
   end
 
   # PATCH/PUT /subscriptions/1

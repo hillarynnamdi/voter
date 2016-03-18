@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :trackable, :validatable,:authentication_keys => [:reg_no]
   belongs_to :subscription
 
 before_validation { self.first_name = first_name.camelcase }
@@ -23,10 +26,10 @@ before_validation { self.last_name = last_name.camelcase }
 	validates :phone_no, length: {maximum:15} ,if: "phone_no.present?"
 	validates :phone_no, uniqueness: {case_sensitivity:false} ,if: "phone_no.present?"
 
-	validates :password, presence: true
-	validates :password, length: {minimum:7} ,if: "password.present?"
-	validates :password, length: {maximum:7} ,if: "password.present?"
-	validates :password, uniqueness: {case_sensitivity:false} ,if: "phone_no.present?"
+	#validates :password, presence: true
+	#validates :password, length: {minimum:7} ,if: "password.present?"
+	#validates :password, length: {maximum:7} ,if: "password.present?"
+	#validates :password, uniqueness: {case_sensitivity:false} ,if: "phone_no.present?"
 
 	validates :gender, presence: true
 end

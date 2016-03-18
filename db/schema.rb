@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311163955) do
+ActiveRecord::Schema.define(version: 20160317180023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email",                         default: "", null: false
-    t.string   "encrypted_password",            default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                 default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -30,20 +30,15 @@ ActiveRecord::Schema.define(version: 20160311163955) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "failed_attempts",               default: 0,  null: false
+    t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "second_factor_attempts_count",  default: 0
-    t.string   "encrypted_otp_secret_key"
-    t.string   "encrypted_otp_secret_key_iv"
-    t.string   "encrypted_otp_secret_key_salt"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "admins", ["confirmation_token"], name: "index_admins_on_confirmation_token", unique: true, using: :btree
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["encrypted_otp_secret_key"], name: "index_admins_on_encrypted_otp_secret_key", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
@@ -62,6 +57,26 @@ ActiveRecord::Schema.define(version: 20160311163955) do
 
   add_index "aspirants", ["subscription_id"], name: "index_aspirants_on_subscription_id", using: :btree
 
+  create_table "students", force: :cascade do |t|
+    t.string   "email",                   default: "chrisgeeq@gmail.com", null: false
+    t.string   "encrypted_password",      default: "password1"
+    t.string   "reg_no",                  default: "",                    null: false
+    t.string   "phone_no",                default: "",                    null: false
+    t.integer  "sign_in_count",           default: 0,                     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "authy_id"
+    t.datetime "last_sign_in_with_authy"
+    t.boolean  "authy_enabled",           default: true
+  end
+
+  add_index "students", ["authy_id"], name: "index_students_on_authy_id", using: :btree
+  add_index "students", ["reg_no"], name: "index_students_on_reg_no", unique: true, using: :btree
+
   create_table "subscriptions", force: :cascade do |t|
     t.string   "account_name"
     t.datetime "created_at",   null: false
@@ -75,27 +90,24 @@ ActiveRecord::Schema.define(version: 20160311163955) do
     t.string   "reg_no"
     t.string   "phone_no"
     t.integer  "subscription_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["subscription_id"], name: "index_users_on_subscription_id", using: :btree
-
-  create_table "vote_rs", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "gender"
-    t.string   "reg_no"
-    t.string   "phone_no"
-    t.integer  "subscription_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "vote_rs", ["subscription_id"], name: "index_vote_rs_on_subscription_id", using: :btree
 
   add_foreign_key "aspirants", "subscriptions"
   add_foreign_key "users", "subscriptions"
-  add_foreign_key "vote_rs", "subscriptions"
 end

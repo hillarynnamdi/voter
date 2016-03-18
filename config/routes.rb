@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
    resources :subscriptions do
     resources :aspirants
     resources :users
