@@ -1,0 +1,166 @@
+<div class="row">
+  <div class="col-sm-12">
+
+<div class='votewrapper1'>
+<div class='votewrapper2'>
+<div class='ontop'>
+  E-Voter >
+ <span class='subscriber'>
+ <span class="glyphicon glyphicon-tags"></span>
+  <%=current_user.subscription.account_name%>
+  </span>
+</div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Aspirants
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <% @aspirants.each do |aspirant| %>
+            <li><a href="#"><span class="glyphicon glyphicon-star-empty" style="color:#74b6ff"></span> <%=aspirant.first_name%> <%=aspirant.last_name%> (<%=aspirant.level%>)</a></li> 
+            <% end %>
+          </ul>
+      </li>
+          <li class="dropdown" style="background-color:black">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-notes-2"></span> Results 
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <% @position.each do |aspirant| %>
+            <li>
+            <%= link_to  subscription_result_path(current_user.subscription.account_name.tr(' ',''),aspirant.position) do %>
+            <span class="glyphicon glyphicon-tags" style="color:#74b6ff"></span>  <%=aspirant.position%>
+            <% end %>
+            </li> 
+            <% end %>
+
+            
+          </ul>
+      </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <%= link_to  destroy_user_session_path,method: :delete do %>
+        <span class="glyphicon glyphicon-log-out"></span>
+         Logout(<%=@current_user.first_name.downcase%>)
+        <%end%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class='results_div'>
+
+
+
+<%if params[:id]=="PRESIDENT"%>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @president.group(:president).count %>
+<%= bar_chart @president.group(:president).count %>
+
+<% elsif params[:id]=="VICE PRESIDENT" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @vice_president.group(:vice_president).count %>
+<%= bar_chart @vice_president.group(:vice_president).count %>
+
+<% elsif params[:id]=="SECRETARY GENERAL" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @secretary_general.group(:secretary_general).count %>
+<%= bar_chart @secretary_general.group(:secretary_general).count %>
+
+<% elsif params[:id]=="FINANCIAL SECRETARY" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @financial_secretary.group(:financial_secretary).count %>
+<%= bar_chart @financial_secretary.group(:financial_secretary).count %>
+
+<% elsif params[:id]=="DIRECTOR OF WELFARE" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @welfare.group(:welfare).count %>
+<%= bar_chart @welfare.group(:welfare).count %>
+
+<% elsif params[:id]=="DIRECTOR OF SPORTS" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @dos.group(:dos).count %>
+<%= bar_chart @dos.group(:dos).count %>
+
+<% elsif params[:id]=="DIRECTOR OF SOCIALS" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @dosocial.group(:dosocial).count %>
+<%= bar_chart @dosocial.group(:dosocial).count %>
+
+<% elsif params[:id]=="ASSISTANT SEC GEN" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @asg.group(:asg).count %>
+<%= bar_chart @asg.group(:asg).count %>
+
+<% elsif params[:id]=="TREASURER" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @treasurer.group(:treasurer).count %>
+<%= bar_chart @treasurer.group(:treasurer).count %>
+
+<% elsif params[:id]=="PROVOST1" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @firstprov.group(:firstprov).count %>
+<%= bar_chart @firstprov.group(:firstprov).count %>
+
+<% elsif params[:id]=="PROVOST2" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @secondprov.group(:secondprov).count %>
+<%= bar_chart @secondprov.group(:secondprov).count %>
+
+<% elsif params[:id]=="PRO" %>
+<div class='result_title'>
+  <%= params[:id]+"'s" %> Result So Far
+</div>
+<%= pie_chart @pro.group(:pro).count %>
+<%= bar_chart @pro.group(:pro).count %>
+
+<%else%>
+
+
+
+<% end %>
+
+
+
+</div>
+
+
+
+  </div>
+  </div>
+
+  </div>
+  </div>

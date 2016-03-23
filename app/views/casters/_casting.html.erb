@@ -1,0 +1,369 @@
+
+<%= form_for ([@subscription, @subscription.casters.build]), html: { style: "display:inline;" } do |f| %>
+<div class='votecontent'>
+
+<div class="row">
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> President's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="PRESIDENT"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+   <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio"> 
+ <%= f.radio_button :president, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Secretary General's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="SECRETARY GENERAL"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :secretary_general, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+   </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Vice President's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="VICE PRESIDENT"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio"> 
+ <%= f.radio_button :vice_president, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Financial Secretary's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="FINANCIAL SECRETARY"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :financial_secretary, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %> 
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> PRO'S Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="PRO"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :pro, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %> 
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Assistant Sec. Gen. Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="ASSISTANT SEC GEN"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio"> 
+ <%= f.radio_button :asg, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Director of Welfare's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="DIRECTOR OF WELFARE"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio"> 
+ <%= f.radio_button :welfare, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %> 
+ </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Director of Sports' Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="DIRECTOR OF SPORTS" %>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :dos, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+   </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Provost1'S Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="PROVOST1"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio"> 
+ <%= f.radio_button :firstprov, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Provost2'S Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="PROVOST2"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :secondprov, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+   </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Treasurer's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="TREASURER"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :treasurer, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+   </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+  <div class="col-sm-6">
+
+<table class='table table-striped' id="account_table_admin">
+<thead>
+  <tr><th class='theading' colspan=2><span class="glyphicon glyphicon-flag"></span> Director of Social's Ballot</th></tr>
+</thead>
+<tbody>
+<% @aspirants.each do |aspirant| %>
+
+<%if aspirant.position=="DIRECTOR OF SOCIALS"%>
+<tr>
+<td>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+ <%= aspirant.first_name%> <%=aspirant.last_name%>
+ <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </td>
+ <td><div class="radio">
+  <%= f.radio_button :dosocial, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
+
+  </div> </td>
+ </tr>
+</tbody>
+<%end%>
+<%end%>
+
+</table>
+</div>
+
+</div>
+
+
+
+
+<div class="form-group">
+<div class="row" style="border-top:1px solid #eeeeee;padding:10px">
+  <div class="col-sm-12">
+      <%= f.hidden_field :voter_id, value:current_user.id %>
+       <%= f.submit "Cast Vote", class: "btn btn-primary btn-lg" %>
+
+</div>
+</div>
+
+</div>
+
+<%end%>

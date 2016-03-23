@@ -38,10 +38,36 @@
 
 </div>
 </div>
+<div class="form-group">
+<div class="row">
+  <div class="col-sm-12">
+         <%= f.select(:level, options_for_select([
+         ['100L', '100L'],
+         ['200L', '200L'],
+         ['300L', '300L'],
+         ['400L', '400L'],
+         ['500L', '500L']]),
+        class: "form-control") %>     
+
+</div>
+</div>
+</div>
 
                 <div class="form-group">
           <div id='acct_style'>Position:</div>
-      <%= f.text_field :position, class: "form-control" %>
+      <%= f.select(:position, options_for_select([
+        ['PRESIDENT', 'PRESIDENT'],
+         ['VICE PRESIDENT', 'VICE PRESIDENT'],
+         ['SECRETARY GENERAL', 'SECRETARY GENERAL'],
+         ['FINANCIAL SECRETARY', 'FINANCIAL SECRETARY'],
+         ['DIRECTOR OF WELFARE', 'DIRECTOR OF WELFARE'],
+         ['DIRECTOR OF SPORTS', 'DIRECTOR OF SPORTS'],
+         ['DIRECTOR OF SOCIALS', 'DIRECTOR OF SOCIALS'],
+         ['ASSISTANT SEC GEN', 'ASSISTANT SEC GEN'],
+         ['TREASURER', 'TREASURER'],
+         ['PROVOST1', 'PROVOST1'],
+         ['PROVOST2', 'PROVOST2'],
+         ['PRO', 'PRO']  ]),class: "form-control") %>
 
         </div>
 

@@ -68,6 +68,10 @@ class SubscriptionsController < ApplicationController
 @subscription = Subscription.find(params[:subscription_id])
   end
 
+   def timer
+@subscription = Subscription.find(params[:subscription_id])
+  end
+
 def aspirants
 @subscription = Subscription.find(params[:subscription_id])
 end
@@ -80,7 +84,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscription_params
-      params.require(:subscription).permit(:account_name)
+      params.require(:subscription).permit(:account_name,:timer)
     end
 
   def pagination

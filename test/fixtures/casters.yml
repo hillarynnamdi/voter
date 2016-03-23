@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  president: MyString
+  vice_president: MyString
+  secretary_general: MyString
+  financial_secretary: MyString
+  pro: MyString
+  subscription_id: 
+  voter_id: MyString
+
+two:
+  president: MyString
+  vice_president: MyString
+  secretary_general: MyString
+  financial_secretary: MyString
+  pro: MyString
+  subscription_id: 
+  voter_id: MyString

@@ -24,12 +24,13 @@
 
         </div>
 
-                 <div class="form-group">
-<div class="row">
-  <div class="col-sm-6">
-        <%= f.radio_button :gender, "Male" %> Male</div> <div class="col-sm-6"><%= f.radio_button :gender, "Female" %> Female</div>
 
-</div>
+        <div class="form-group">
+      <div class="row">
+      <div class="col-sm-6">
+      <%= f.radio_button :gender, "Male" %> Male</div> <div class="col-sm-6"><%= f.radio_button :gender, "Female" %> Female</div>
+
+      </div>
 </div>
 
                 <div class="form-group">
@@ -39,17 +40,17 @@
         </div>
 
           <div class="form-group">
-          <div id='acct_style'>Phone No.:</div>
-      <%= f.text_area :phone_no, class: "form-control" %>
+          <div id='acct_style'>Phone No.: (e.g +23480333XXXXX)</div>
+      <%= f.text_area :phone_no, class: "form-control",value:'+234' %>
 
         </div>
+
 
      <div class="form-group">
-          <div id='acct_style'>Password:</div>
-      <%= f.text_field :password, class: "form-control",disabled:'disabled'%>
+          
+      <%= f.hidden_field :password, class: "form-control",value:Devise.friendly_token.first(8) %>
 
         </div>
-
 
 
 
