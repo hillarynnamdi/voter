@@ -3,13 +3,38 @@ before_action :authenticate_admin!
  def new 
 @subscription = Subscription.find(params[:subscription_id])
 
+@generated_password = Devise.friendly_token.first(8)
+
+end
+
+def create
+@subscription = Subscription.find(params[:subscription_id])
+@user = @subscription.users.create(user_params)
+
+if @user
+uri = URI("https://api.infobip.com/sms/1/text/single")
+
+Net::HTTP.start(uri.host, uri.port,
+:use_ssl => uri.scheme == 'https', 
+:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+
+request = Net::HTTP::Post.new uri.request_uri
+request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
+request["content-type"] = 'application/json'
+request["accept"] = 'application/json'
+request.basic_auth <%= ENV['INFOBIP_USERNAME'] %> , <%= ENV['INFOBIP_PASSWORD'] %>
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s}\"}"
+
+response = http.request request
+
+puts response.read_body
+
+end
+
+end
 
 
-  end
-	  def create
-    @subscription = Subscription.find(params[:subscription_id])
-    @user = @subscription.users.create(user_params)
-	   @users =pagination
+@users = pagination
 
     
   end
@@ -64,7 +89,8 @@ def user_params
 
 
     def pagination
-  @users||= @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  @subscription = Subscription.find(params[:subscription_id])
+  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
 
     end
 

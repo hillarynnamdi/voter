@@ -60,7 +60,7 @@ end
  
   private
     def aspirant_params
-      params.require(:aspirant).permit(:first_name, :last_name, :gender, :image,:position,:statement)
+      params.require(:aspirant).permit(:first_name, :last_name, :gender, :image,:position,:statement,:level)
     end
 
     def pagination

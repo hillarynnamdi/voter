@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+devise_scope :user do
+  get "sign_in", to: "devise/sessions#new"
+  get "login" => "devise/sessions#new"
+  get "" => "devise/sessions#new"
+  delete "/logout" => "devise/sessions#destroy"
+  root to: "devise/sessions#new"
+end
+
    resources :subscriptions do
     resources :aspirants
     resources :users
+    resources :casters
+    resources :results
     get "add"
   end
 
@@ -12,6 +23,7 @@ Rails.application.routes.draw do
   #devise_scope :user do
   #root to: "devise/sessions#new"
   #end
+
 
 
   devise_for :admins

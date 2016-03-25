@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322210348) do
+ActiveRecord::Schema.define(version: 20160323184116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +64,44 @@ ActiveRecord::Schema.define(version: 20160322210348) do
     t.string   "image"
     t.string   "position"
     t.string   "statement"
+    t.string   "level"
+    t.integer  "number_of_votes"
   end
 
   add_index "aspirants", ["subscription_id"], name: "index_aspirants_on_subscription_id", using: :btree
+
+  create_table "casters", force: :cascade do |t|
+    t.string   "president"
+    t.string   "vice_president"
+    t.string   "secretary_general"
+    t.string   "financial_secretary"
+    t.string   "pro"
+    t.integer  "subscription_id"
+    t.string   "voter_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "dos"
+    t.string   "welfare"
+    t.string   "asg"
+    t.string   "firstprov"
+    t.string   "secondprov"
+    t.string   "treasurer"
+    t.string   "dosocial"
+    t.string   "dos_name"
+    t.string   "welfare_name"
+    t.string   "asg_name"
+    t.string   "firstprov_name"
+    t.string   "secondprov_name"
+    t.string   "treasurer_name"
+    t.string   "dosocial_name"
+    t.string   "president_name"
+    t.string   "vice_president_name"
+    t.string   "financial_secretary_name"
+    t.string   "pro_name"
+    t.string   "secretary_general_name"
+  end
+
+  add_index "casters", ["subscription_id"], name: "index_casters_on_subscription_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "email",                   default: "chrisgeeq@gmail.com", null: false
@@ -92,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160322210348) do
     t.string   "account_name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "timer"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,22 +137,25 @@ ActiveRecord::Schema.define(version: 20160322210348) do
     t.string   "reg_no"
     t.string   "phone_no"
     t.integer  "subscription_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "email"
+    t.string   "encrypted_password"
+    t.boolean  "has_voted",              default: false
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["subscription_id"], name: "index_users_on_subscription_id", using: :btree
 
   add_foreign_key "aspirants", "subscriptions"
+  add_foreign_key "casters", "subscriptions"
   add_foreign_key "users", "subscriptions"
 end

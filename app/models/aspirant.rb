@@ -1,7 +1,6 @@
 class Aspirant < ActiveRecord::Base
   belongs_to :subscription
   
-before_validation { self.position = position.upcase }
 before_validation { self.first_name = first_name.camelcase }
 before_validation { self.last_name = last_name.camelcase }
 
@@ -24,7 +23,7 @@ before_validation { self.last_name = last_name.camelcase }
 	validates :statement, length: {minimum:10} ,if: "statement.present?"
 
 	validates :gender, presence: true
-
+	validates :level, presence: true
 	validates :image, presence: true
 
 
