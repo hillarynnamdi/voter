@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
    resources :subscriptions do
     resources :aspirants
     resources :users
     get "add"
-
-
   end
+
+  # root 'devise/session#new'
+
+  #devise_scope :user do
+  #root to: "devise/sessions#new"
+  #end
 
 
   devise_for :admins

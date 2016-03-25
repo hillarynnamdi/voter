@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :trackable, :validatable,:authentication_keys => [:reg_no]
+  devise :database_authenticatable, :trackable, :authentication_keys => [:reg_no]
   belongs_to :subscription
 
-before_validation { self.first_name = first_name.upcase }
-before_validation { self.last_name = last_name.upcase }
+	before_validation { self.first_name = first_name.upcase }
+	before_validation { self.last_name = last_name.upcase }
 
 
-    	validates :first_name, presence: true
+    validates :first_name, presence: true
 	validates :first_name, length: {minimum:3} ,if: "first_name.present?"
 	validates :first_name, length: {maximum:100} ,if: "first_name.present?"
 

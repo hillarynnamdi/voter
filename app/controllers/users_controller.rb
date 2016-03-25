@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :authenticate_admin!
  def new 
 @subscription = Subscription.find(params[:subscription_id])
 
@@ -59,7 +59,7 @@ end
 
 
 def user_params
-      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no,:phone_no,:password)
+      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no,:password)
     end
 
 
