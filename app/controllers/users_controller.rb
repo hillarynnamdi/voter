@@ -22,7 +22,7 @@ request = Net::HTTP::Post.new uri.request_uri
 request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
-request.basic_auth <%= ENV['INFOBIP_USERNAME'] %> , <%= ENV['INFOBIP_PASSWORD'] %>
+request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
 request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s}\"}"
 
 response = http.request request
