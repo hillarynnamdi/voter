@@ -40,7 +40,7 @@ gem 'will_paginate-bootstrap'
 gem 'chartkick'
 gem 'groupdate'
 
-
+gem 'autoprefixer-rails'
 
 
 group :development, :test do
