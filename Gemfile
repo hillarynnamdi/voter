@@ -40,7 +40,7 @@ gem 'will_paginate-bootstrap'
 gem 'chartkick'
 gem 'groupdate'
 
-
+gem 'autoprefixer-rails'
 
 
 group :development, :test do
@@ -58,11 +58,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'coffee-script-source', '1.8.0'
 
-gem 'execjs'
-gem 'oneapi-ruby'
+gem 'rails_12factor', group: :production
 
+gem 'execjs'
+
+gem 'oneapi-ruby'
+gem 'figaro'
+gem 'devise_invitable'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'remotipart', '~> 1.2'
 
-
+gem 'sendgrid'

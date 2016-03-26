@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
 
 devise_scope :user do
@@ -8,6 +7,7 @@ devise_scope :user do
   get "login" => "devise/sessions#new"
   get "" => "devise/sessions#new"
   delete "/logout" => "devise/sessions#destroy"
+  root to: "devise/sessions#new"
 end
 
    resources :subscriptions do
@@ -16,9 +16,13 @@ end
     resources :casters
     resources :results
     get "add"
-
-
   end
+
+  # root 'devise/session#new'
+
+  #devise_scope :user do
+  #root to: "devise/sessions#new"
+  #end
 
 
 

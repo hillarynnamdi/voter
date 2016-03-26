@@ -30,8 +30,8 @@ config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => "587",
     :domain => "mail.google.com",
-    :user_name => "hillarynnamdievans@gmail.com",
-    :password => "hillarynnamdi",
+    :user_name => "<%= ENV['SENDGRID_USERNAME'] %>",
+    :password => "<%= ENV['SENDGRID_USERNAME'] %>",
     :authentication => "plain",
     :enable_starttls_auto => true
   } 

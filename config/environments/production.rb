@@ -20,6 +20,11 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
+   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.default_url_options = { :host => "serene-cliffs-97946.herokuapp.com" }
+  config.action_mailer.delivery_method = :smtp
+
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
@@ -73,6 +78,18 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+   config.action_mailer.smtp_settings = {
+    
+    :address        => "smtp.sendgrid.net",
+    :port           => "25",
+    :authentication => :plain,
+    :user_name      => "<%= ENV['SENDGRID_USERNAME'] %>",
+    :password       => "<%= ENV['SENDGRID_PASSWORD'] %>",
+    :domain         => "serene-cliffs-97946.herokuapp.com",
+    :enable_starttls_auto => true
+  
+  }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
