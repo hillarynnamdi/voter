@@ -1,22 +1,8 @@
 
+
+<div class="container-fluid">
 <div class="row">
-  <div class="col-sm-12">
-<div class='login_wrapper'>
-
-<ul class="nav nav-tabs">
-  <li><a data-toggle="tab" href="#menu1">Developer</a></li>
-  <li class="active"><a data-toggle="tab" href="#home">E-Voter Login</a></li>
-  
-</ul>
-
-<div class="tab-content">
-<div id="home" class="tab-pane fade in active">
-<div class='login_div'>
-<div style='text-align:center;margin-top:-70px;'>
-<span class="glyphicon glyphicon-user" id='login_user_logo'></span>
-</div>
-<h2 id='portal_login'></h2>
-
+  <div class="col-xs-12 col-md-8 col-md-12" >
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 <%if alert.present? || notice.present?%>
@@ -27,18 +13,13 @@
 
 <%end%>
 
-
+ <span class="glyphicon glyphicon-user"></span> Registration Number
   <div class="form-group">
-    <div id='reg_no_div'>
-    <span class="glyphicon glyphicon-user"></span> Registration Number
-    </div>
     <%= f.text_field :reg_no,class: "form-control",placeholder:"Reg Number e.g 20111778000",id:'reg_pass1' %>
   </div>
 
    <div class="form-group">
-   <div id='reg_no_div'>
-   <span class="glyphicon glyphicon-lock"></span> Password
-   </div>
+   Password
     <%= f.password_field :password, class: "form-control",id:'reg_pass2' %>
   </div>
 
@@ -52,20 +33,8 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
 
 </div>
-  </div>
-  <div id="menu1" class="tab-pane fade">
-    <h3>Menu 1</h3>
-    <p>Some content in menu 1.</p>
-  </div>
-  <div id="menu2" class="tab-pane fade">
-    <h3>Menu 2</h3>
-    <p>Some content in menu 2.</p>
-  </div>
-</div>
 
-</div>
 </div>
 </div>
