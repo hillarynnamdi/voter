@@ -1,0 +1,1 @@
+$(document).on("keyup","#search",function(){var t=$(this).val().trimLeft().toUpperCase();$(this).val(t),$(".render-ajax").html("<div style='margin:auto,width:60%;text-align:center;padding:20px;color:black'>Loading...</div>"),$(this).parent().submit()}),$(document).on("click",".pagination a",function(){return $.get(this.href,null,null,"script"),!1});
