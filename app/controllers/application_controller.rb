@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-#def after_sign_in_path_for(resource)
-#   new_subscription_caster_path(current_user.subscription.account_name.tr(' ',''))
-#end
+def after_sign_in_path_for(resource)
+   new_subscription_caster_path(current_user.subscription.account_name.tr(' ',''))
+end
 
 end
