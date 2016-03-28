@@ -1,8 +1,20 @@
 <% provide(:title, 'NACOSS|E-VOTING')%>
 
-<div class="container-fluid">
+
+<ul class="nav nav-tabs">
+  <li><a data-toggle="tab" href="#developer">Developers</a></li>
+  <li class="active"><a data-toggle="tab" href="#evoter">E-Voting</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="developer" class="tab-pane fade">
+    <h3>Developers</h3>
+    <p>Some content.</p>
+  </div>
+  <div id="evoter" class="tab-pane fade in active">
+
 <div class="row">
-  <div class="col-xs-12 col-md-8 col-md-12" >
+<div class="login_page">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 <%if alert.present? || notice.present?%>
@@ -13,28 +25,26 @@
 
 <%end%>
 
- <span class="glyphicon glyphicon-user"></span> Registration Number
-  <div class="form-group">
-    <%= f.text_field :reg_no,class: "form-control",placeholder:"Reg Number e.g 20111778000",id:'reg_pass1' %>
-  </div>
-
-   <div class="form-group">
-   Password
-    <%= f.password_field :password, class: "form-control",id:'reg_pass2' %>
-  </div>
-
-   <div class="form-group">
+  <div class="form-inputs">
+   <span class="glyphicon glyphicon-user"></span> Registration Number
+    <%= f.text_field :reg_no,class: "form-control",placeholder:"Reg Number e.g 20111778000",required: true, autofocus: true %>
+    </div>
+  <div class="form-inputs">
+  <span class="glyphicon glyphicon-lock"></span> Password
+   <%= f.password_field :password, class: "form-control", required: true, autofocus: true %> 
+ </div>
+   <div class="form-inputs">
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
-  <div class="form-group">
+  <div class="form-inputs">
     <%= f.button :submit,"Log In", class: "btn btn-info btn-lg" %>
 
   </div>
 <% end %>
 
-
+</div>
 </div>
 
-</div>
+  </div>
 </div>
