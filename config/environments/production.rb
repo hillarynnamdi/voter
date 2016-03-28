@@ -22,7 +22,7 @@ Rails.application.configure do
 
    config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true 
-  config.action_mailer.default_url_options = { :host => "www.clickital.com" }
+  config.action_mailer.default_url_options = { :host => "http://clickital.com" }
   config.action_mailer.delivery_method = :smtp
 
   # Disable serving static files from the `/public` folder by default since
@@ -89,7 +89,7 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name      => "<%= ENV['SENDGRID_USERNAME'] %>",
     :password       => "<%= ENV['SENDGRID_PASSWORD'] %>",
-    :domain         => "serene-cliffs-97946.herokuapp.com",
+    :domain         => "http://clickital.com",
     :enable_starttls_auto => true
   
   }
