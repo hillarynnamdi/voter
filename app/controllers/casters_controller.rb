@@ -1,5 +1,5 @@
 class CastersController < ApplicationController
-
+#before_action :authenticate_admin!
 def new
 
 	@subscription=current_user.subscription
@@ -17,8 +17,6 @@ def create
 
 @subscription = Subscription.find(params[:subscription_id])
 @caster = @subscription.casters.create(caster_params)
-
-
 
 #@user.update(has_voted:true)
 
