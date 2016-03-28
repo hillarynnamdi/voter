@@ -26,11 +26,11 @@
 <%end%>
 
   <div class="form-inputs">
-   <span class="glyphicon glyphicon-user"></span> Registration Number
-    <%= f.text_field :reg_no,class: "form-control",placeholder:"Reg Number e.g 20111778000",required: true, autofocus: true %>
+   <div class='text_login'><span class="glyphicon glyphicon-user"></span> Registration Number</div>
+    <%= f.text_field :reg_no,class: "form-control",placeholder:"e.g 20111778000",required: true, autofocus: true %>
     </div>
   <div class="form-inputs">
-  <span class="glyphicon glyphicon-lock"></span> Password
+  <div class='text_login'><span class="glyphicon glyphicon-lock"></span> Password</div>
    <%= f.password_field :password, class: "form-control", required: true, autofocus: true %> 
  </div>
    <div class="form-inputs">
