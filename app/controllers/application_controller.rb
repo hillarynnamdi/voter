@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 		
 			 if resource.class == Admin			
 		  		subscriptions_path
-		  	elsif resource.class == User
+		  	 elsif resource.class == User
 		  		new_subscription_caster_path(current_user.subscription.account_name.tr(' ',''))
-	  	end
+	  		 end
 	end
 
 	def after_sign_up_path_for(resource)
