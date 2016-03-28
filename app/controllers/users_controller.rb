@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
+#before_action :authenticate_admin!
  def new 
 @subscription = Subscription.find(params[:subscription_id])
 
