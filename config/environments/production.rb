@@ -22,8 +22,32 @@ Rails.application.configure do
 
    config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true 
-  config.action_mailer.default_url_options = { :host => "http://clickital.com" }
+  config.action_mailer.default_url_options = { :host => "serene-cliffs-97946.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
+
+
+   #config.action_mailer.smtp_settings = {
+    
+    #:address        => "smtp.sendgrid.net",
+    #:port           => "25",
+    #:authentication => :plain,
+    #:user_name      => "<%= ENV['SENDGRID_USERNAME'] %>",
+    #:password       => "<%= ENV['SENDGRID_PASSWORD'] %>",
+    #:domain         => "serene-cliffs-97946.herokuapp.com",
+    #:enable_starttls_auto => true
+  
+  #}
+
+
+config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "mail.google.com",
+    :user_name => "hillarynnamdievans@gmail.com",
+    :password => "hillarynnamdi",
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  } 
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -82,17 +106,6 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-   config.action_mailer.smtp_settings = {
-    
-    :address        => "smtp.sendgrid.net",
-    :port           => "25",
-    :authentication => :plain,
-    :user_name      => "<%= ENV['SENDGRID_USERNAME'] %>",
-    :password       => "<%= ENV['SENDGRID_PASSWORD'] %>",
-    :domain         => "http://clickital.com",
-    :enable_starttls_auto => true
-  
-  }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
