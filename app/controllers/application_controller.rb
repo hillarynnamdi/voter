@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 			 if resource.class == Admin			
 		  		subscriptions_path
 		  	 elsif resource.class == User
-		  		new_subscription_caster_path(current_user.subscription.account_name.tr(' ',''))
+		  		subscription_casters_path
 	  		 end
 	end
 
@@ -25,5 +25,10 @@ class ApplicationController < ActionController::Base
 		 
 	end
 
+	 def after_accept_path_for(resource)
+	 	#accept_admin_invitation
+	 	subscriptions_path
+
+	 end
 
 end
