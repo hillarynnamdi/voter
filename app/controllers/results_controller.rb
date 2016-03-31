@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-#before_action :authenticate_admin!
+before_action :authenticate_user!
 	def show
 
 	@aspirants=current_user.subscription.aspirants.order('first_name asc')

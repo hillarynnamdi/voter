@@ -65,11 +65,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.sms_sender_login = "hillarynnamdievans@gmail.com"
-  config.sms_sender_password = "hillarynnamdi"
 
   # sets sending eco SMS messages to true
-  config.sms_sender_eco = 1
 
 
   # Raises error for missing translations
