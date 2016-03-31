@@ -112,5 +112,11 @@ config.action_mailer.smtp_settings = {
 
 
   config.assets.compile = true
-  
+
+  config.serve_static_assets = true
+
+
+
+
+
 end
