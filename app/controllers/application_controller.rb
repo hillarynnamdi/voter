@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 			 if resource.class == Admin			
 		  		subscriptions_path
 		  	 elsif resource.class == User
-		  		subscription_casters_path
+		  		new_subscription_caster_path(current_user.subscription)
 	  		 end
 	end
 
