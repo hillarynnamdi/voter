@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	 def after_accept_path_for(resource)
-	 	#accept_admin_invitation
-	 	subscriptions_path
+	 	accept_admin_invitation_path
 
 	 end
 
