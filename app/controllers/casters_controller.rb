@@ -1,5 +1,5 @@
 class CastersController < ApplicationController
-#before_action :authenticate_admin!
+before_action :authenticate_user!
 def new
 
 	@subscription=current_user.subscription

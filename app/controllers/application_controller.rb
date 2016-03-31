@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
 			 if resource.class == Admin			
 		  		subscriptions_path
 		  	 elsif resource.class == User
-		  		new_subscription_caster_path(current_user.subscription)
+		  		new_subscription_caster_path(current_user.subscription.account_name.tr(' ','-'))
+
+
 	  		 end
 	end
 
@@ -21,7 +23,13 @@ class ApplicationController < ActionController::Base
 
 
 	 def after_sign_out_path_for(resource)
-		 	new_admin_session_path
+		 	
+
+		 	if resource.class == Admin			
+		  		new_admin_session_path
+		  	 elsif resource.class == User
+		  		new_user_session_path		  		
+	  		 end
 		 
 	end
 
