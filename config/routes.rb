@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   #root to: "devise/sessions#new"
 #end
 
+  get "/subscriptions/:subscription_id/casters"=>"casters#new"
+
   devise_scope :admin do
       get "admins/sign_out" => "devise/sessions#destroy"
     end

@@ -19,7 +19,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Aspirants
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <% @aspirants.each do |aspirant| %>
+          <% current_user.subscription.aspirants.each do |aspirant| %>
             <li><a href="#"><span class="glyphicon glyphicon-star-empty" style="color:#74b6ff"></span> <%=aspirant.first_name%> <%=aspirant.last_name%> (<%=aspirant.level%>)</a></li> 
             <% end %>
           </ul>
@@ -47,6 +47,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+        
         </li>
       </ul>
     </div>

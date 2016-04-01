@@ -12,18 +12,23 @@ end
 
 
 def create
+
+@aspirants=current_user.subscription.aspirants.order('first_name asc')
+@position=current_user.subscription.aspirants.select(:position).order('position asc').distinct
+
 @user=current_user
 
+@subscription = current_user.subscription
 
-@subscription = Subscription.find(params[:subscription_id])
 @caster = @subscription.casters.create(caster_params)
 
+if @caster.save
+	redirect_to new_subscription_caster_path(current_user.subscription.account_name.tr(' ','-'))
+     else
+      render 'new'
+  end
+
 #@user.update(has_voted:true)
-
-
-
-
-redirect_to new_subscription_caster_path(current_user.subscription.account_name.tr(' ',''))
 
 end
 
