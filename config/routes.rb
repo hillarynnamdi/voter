@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
 
-  devise_for :users
 
-devise_scope :user do
-  get "login" => "devise/sessions#new"
-  get "" => "devise/sessions#new"
-  delete "/users/sign_out" => "devise/sessions#destroy"
-  root to: "devise/sessions#new"
-end
+#devise_for :users
+
+#devise_scope :user do
+  #get "sign_in", to: "devise/sessions#new"
+ # get "login" => "devise/sessions#new"
+  #delete "/sign_out" => "devise/sessions#destroy"
+  #get "" => "devise/sessions#new"
+  #delete "/logout" => "devise/sessions#destroy"
+  #delete "users/sign_out" => "devise/sessions#destroy"
+  #root to: "devise/sessions#new"
+#end
+
+  devise_scope :admin do
+      get "admins/sign_out" => "devise/sessions#destroy"
+    end
+
+    devise_for :admins
 
     resources :subscriptions do
     resources :aspirants
@@ -20,15 +30,22 @@ end
       post "send_smsthanks"
   end
 
+  #devise_for :admins
+
+  #devise_scope :admin do
+   #   get "admins/sign_out" => "devise/sessions#destroy"
+    #end
+
   # root 'devise/session#new'
+  devise_for :users, path: '/'
 
-  #devise_scope :user do
-  #root to: "devise/sessions#new"
-  #end
+  devise_scope :user do
+    get "/sign_out" => "devise/sessions#destroy"
+      root to: "devise/sessions#new"
+  end
 
-
-
-  devise_for :admins
+ 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,6 +1,6 @@
-<% provide(:title, 'NACOSS | E-VOTING')%>
+<% provide(:title, 'ADMIN | E-VOTING')%>
 <div class='form'>
-	<h2>Log in</h2>
+	<h2 class="form-inputs">Log in</h2>
 	<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 	<p class='error_alert'>
 		<%= notice %>
@@ -10,12 +10,12 @@
     <%= f.input :email, required: false, autofocus: true %>
     <%= f.input :password, required: false %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions" >
     <%= f.button :submit, "Log in" , class:'btn btn-primary' , id:'login-button'%>
   </div>
 <% end %>
-
+<div class='form-inputs'>
+ 
 <%= render "devise/shared/links" %>
+ 
+</div>
 </div>

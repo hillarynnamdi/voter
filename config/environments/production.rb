@@ -109,14 +109,4 @@ config.action_mailer.smtp_settings = {
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-
-  config.assets.compile = true
-
-  config.serve_static_assets = true
-
-
-
-
-
 end

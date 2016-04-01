@@ -26,15 +26,29 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => "587",
-    :domain => "mail.google.com",
-    :user_name => "hillarynnamdievans",
-    :password => "hillarynnamdi",
-    :authentication => "plain",
-    :enable_starttls_auto => true
-  } 
+#config.action_mailer.smtp_settings = {
+
+    #:address => "smtp.gmail.com",
+    #:port => "587",
+   # :domain => "mail.google.com",
+    #:user_name =>  "<%=ENV['GMAIL_USERNAME'] %>"  ,
+    #:password =>   "<%= ENV['GMAIL_PASSWORD'] %>",
+   # :authentication => "plain",
+  #  :enable_starttls_auto => true
+
+ #} 
+
+
+
+     config.action_mailer.smtp_settings = {
+     address:"smtp.sendgrid.net",
+     port:   "25",
+     authentication:"plain",
+     user_name: ENV['SENDGRID_USERNAME'] ,
+     password:  ENV['SENDGRID_PASSWORD'] ,
+     domain:    "localhost:3000",
+     enable_starttls_auto: true
+  }
 
 
   # Debug mode disables concatenation and preprocessing of assets.
