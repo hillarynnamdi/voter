@@ -10,55 +10,8 @@
   <%=@current_user.subscription.account_name%>
   </span>
 </div>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Aspirants
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <% @aspirants.each do |aspirant| %>
-            <li><a href="#"><span class="glyphicon glyphicon-star-empty" style="color:#74b6ff"></span> <%=aspirant.first_name%> <%=aspirant.last_name%> (<%=aspirant.level%>)</a></li> 
-            <% end %>
-          </ul>
-      </li>
-          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-plus"></span> Results 
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <% @position.each do |aspirant| %>
-            <li>
-            <%= link_to  subscription_result_path(current_user.subscription.account_name.tr(' ',''),aspirant.position) do %>
-            <span class="glyphicon glyphicon-tags" style="color:#74b6ff"></span>  <%=aspirant.position%>
-            <% end %>
-            </li> 
-            <% end %>
 
-            
-          </ul>
-      </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-        <%= link_to  destroy_user_session_path,method: :delete do %>
-        <span class="glyphicon glyphicon-log-out"></span>
-         Logout(<%=@current_user.first_name.downcase%>)
-        <%end%>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+<%=render "shared/caster_nav_bar" %>
 
 <% if current_user.subscription.timer=="On" %>
 

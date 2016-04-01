@@ -1,30 +1,7 @@
 <div class='wrapper'>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#" >Clickital</a>
-    </div>
 
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li ><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li><%=link_to subscriptions_path do %> <span class="glyphicon glyphicon-envelope"></span> Subscription <% end %></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> <%= @subscription.account_name %> Aspirants</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </ul>
-    </div>
-
-  </div>
-</nav>
+<%= render "shared/nav_bar" %>
 
 
 <div class="row">
@@ -48,18 +25,18 @@
 <%= render 'paginationaspirants' %>
 
 </div>
-
+<div class='new'>
 <%= link_to "New #{@subscription.account_name} Aspirant", new_subscription_aspirant_path, remote: true, class: "btn btn-primary" %>
+</div>
 
 <br>
-
+<%= render "shared/loading" %>
   </div>
 
 </div>
 
 <div id="subscription-modal" class="modal fade"></div>
 
-<footer class="container-fluid text-center">
-</footer>
+
 
 </div>

@@ -1,27 +1,6 @@
 <div class='wrapper'>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#" >Clickital</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li ><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Subscription</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Aspirants</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><span class="glyphicon glyphicon-log-out"><%= link_to 'logout', destroy_admin_session_path %></span> </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<%= render "shared/nav_bar" %>
 
 
 
@@ -47,11 +26,16 @@
 
 </div>
 
+<div class='new'>
 <%= link_to "New Subscription", new_subscription_path, remote: true, class: "btn btn-primary" %>
+</div>
 
 <br>
 
   </div>
 
+<%= render "shared/loading" %>
 </div>
 <div id="subscription-modal" class="modal fade"></div>
+
+

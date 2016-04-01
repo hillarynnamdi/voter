@@ -17,143 +17,131 @@
 
 
 
-<%if params[:id]=="PRESIDENT"%>
+
 <div class='result_title'>
 <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  President's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  President's Result 
 <%end%>
 </div>
 <%= pie_chart @president.group(:president).count %>
 <%= bar_chart @president.group(:president).count %>
 
-<% elsif params[:id]=="VICE PRESIDENT" %>
+Total:<%=@president.count%>
+
+
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Vice President's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Vice President's Result 
 <%end%>
 </div>
 <%= pie_chart @vice_president.group(:vice_president).count %>
 <%= bar_chart @vice_president.group(:vice_president).count %>
 
-<% elsif params[:id]=="SECRETARY GENERAL" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+   Secretary General's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Secretary General's Result 
 <%end%>
 </div>
 <%= pie_chart @secretary_general.group(:secretary_general).count %>
 <%= bar_chart @secretary_general.group(:secretary_general).count %>
 
-<% elsif params[:id]=="FINANCIAL SECRETARY" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Financial Secretary's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Financial Secretary's Result 
 <%end%>
 </div>
 <%= pie_chart @financial_secretary.group(:financial_secretary).count %>
 <%= bar_chart @financial_secretary.group(:financial_secretary).count %>
 
-<% elsif params[:id]=="DIRECTOR OF WELFARE" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Welfare's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Welfare's Result 
 <%end%>
 </div>
 <%= pie_chart @welfare.group(:welfare).count %>
 <%= bar_chart @welfare.group(:welfare).count %>
 
-<% elsif params[:id]=="DIRECTOR OF SPORTS" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Director of Sport's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Director of Sport's Result 
 <%end%>
 </div>
 <%= pie_chart @dos.group(:dos).count %>
 <%= bar_chart @dos.group(:dos).count %>
 
-<% elsif params[:id]=="DIRECTOR OF SOCIALS" %>
 <div class='result_title'>
  <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Director of Social's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Director of Social's Result 
 <%end%>
 </div>
 <%= pie_chart @dosocial.group(:dosocial).count %>
 <%= bar_chart @dosocial.group(:dosocial).count %>
 
-<% elsif params[:id]=="ASSISTANT SEC GEN" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Assistant Secretary General's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Assistant Secretary General's Result 
 <%end%>
 </div>
 <%= pie_chart @asg.group(:asg).count %>
 <%= bar_chart @asg.group(:asg).count %>
 
-<% elsif params[:id]=="TREASURER" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Treasurer's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Treasurer's Result 
 <%end%>
 </div>
 <%= pie_chart @treasurer.group(:treasurer).count %>
 <%= bar_chart @treasurer.group(:treasurer).count %>
 
-<% elsif params[:id]=="PROVOST1" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Prov1's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Prov1's Result 
 <%end%>
 </div>
 <%= pie_chart @firstprov.group(:firstprov).count %>
 <%= bar_chart @firstprov.group(:firstprov).count %>
 
-<% elsif params[:id]=="PROVOST2" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  Prov2's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  Prov2's Result 
 <%end%>
 </div>
 <%= pie_chart @secondprov.group(:secondprov).count %>
 <%= bar_chart @secondprov.group(:secondprov).count %>
 
-<% elsif params[:id]=="PRO" %>
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
-  <%= params[:id]+"'s" %> Result So Far
+  PRO's Result So Far
   <%else%>
-  <%= params[:id]+"'s" %> Result 
+  PRO's Result 
 <%end%>
 </div>
 <%= pie_chart @pro.group(:pro).count %>
 <%= bar_chart @pro.group(:pro).count %>
 
-<%else%>
 
-
-
-<% end %>
 
 
 

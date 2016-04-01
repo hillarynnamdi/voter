@@ -3,12 +3,14 @@
 <%= render "shared/nav_bar" %>
 
 
+
+
 <div class="row">
   <div class="col-sm-12">
-
+  <div class="form-group">
   <div class="form-group">
   <label for="usr">Search <u><%= @subscription.account_name %></u> Voters by First Name(or Last Name or Reg No):</label>
-  <%= form_tag subscription_users_path,method: :get,remote:true do  %>
+  <%= form_tag subscription_sms_path(@subscription),method: :get,remote:true do  %>
      <div class="input-group input-group-lg">
      <span class="input-group-addon">
         <span class="glyphicon glyphicon-search"></span>
@@ -19,29 +21,29 @@
   <%end%> 
 </div>
 
-  <div class='render-ajax'>
+<div class='render-ajax'>
 
 <%= render 'paginationusers' %>
 
 </div>
 
-<div class='new'>
-<%= link_to "New #{@subscription.account_name} Voter", new_subscription_user_path, remote: true, class: "btn btn-primary" %>
 
+
+<div class='new'>
+<%= button_to "Send SMS Token", subscription_send_smstoken_path, remote: true, class: "btn btn-info" %> 
+<br>
+<%= button_to "Send Vote Thanks", subscription_send_smsthanks_path, remote: true, class: "btn btn-primary" %>
 </div>
+
+
+
 
 <br>
 
   </div>
 
-</div>
-
-<div id="subscription-modal" class="modal fade">
-  
-
 <%= render "shared/loading" %>
-
-  
 </div>
 
-</div>
+
+
