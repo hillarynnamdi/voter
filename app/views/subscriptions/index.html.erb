@@ -18,7 +18,10 @@
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Aspirants</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><span class="glyphicon glyphicon-log-out"><%= link_to 'logout', destroy_admin_session_path %></span> </li>
+        <li><%= link_to  destroy_admin_session_path , method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span> LogOut
+            <%end%>
+        </li>
       </ul>
     </div>
   </div>
