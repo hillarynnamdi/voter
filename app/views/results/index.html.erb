@@ -40,7 +40,13 @@
 <div class='metrics_body'>Total Number of votes: <span><%=@president.count%></span></div>
 <div class='metrics_body'>
 <%@presidentcount.each do |f|%>
-<div style="padding:7px"><%=f.first_name%> <%=f.last_name%>: <span><%=f.number_of_votes%></span></div>
+<div style="padding:7px"><span class="glyphicon glyphicon-user"> <%=f.first_name%> <%=f.last_name%>: 
+<% if f.number_of_votes.nil?%>
+<span>0</span>
+<%else%>
+<span><%=f.number_of_votes%></span>
+<%end%>
+</div>
 <%end%>
 
 </div>
