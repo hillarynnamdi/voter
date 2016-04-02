@@ -1,3 +1,4 @@
+ <%= provide(:title ,'VIEW RESULTS')%>
 <div class="row">
   <div class="col-sm-12">
 
@@ -25,10 +26,20 @@
   President's Result 
 <%end%>
 </div>
+<div>
 <%= pie_chart @president.group(:president).count %>
-<%= bar_chart @president.group(:president).count %>
+<%= column_chart @president.group(:president).count %>
+</div>
 
-Total:<%=@president.count%>
+
+<div class='vote_metrics'>
+<div class='metrics_head'>PRESIDENT'S METRICS</div>
+<div class='metrics_body'>Total Number of Aspirants: <span><%=@presidentcount.count%></span></div>
+<div class='metrics_body'>Total Number of votes: <span><%=@president.count%></span></div>
+<div class='metrics_body'>
+</div>
+
+
 
 
 <div class='result_title'>
@@ -39,7 +50,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @vice_president.group(:vice_president).count %>
-<%= bar_chart @vice_president.group(:vice_president).count %>
+<%= column_chart @vice_president.group(:vice_president).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -49,7 +60,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @secretary_general.group(:secretary_general).count %>
-<%= bar_chart @secretary_general.group(:secretary_general).count %>
+<%= column_chart @secretary_general.group(:secretary_general).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -59,7 +70,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @financial_secretary.group(:financial_secretary).count %>
-<%= bar_chart @financial_secretary.group(:financial_secretary).count %>
+<%= column_chart @financial_secretary.group(:financial_secretary).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -69,7 +80,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @welfare.group(:welfare).count %>
-<%= bar_chart @welfare.group(:welfare).count %>
+<%= column_chart @welfare.group(:welfare).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -79,7 +90,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @dos.group(:dos).count %>
-<%= bar_chart @dos.group(:dos).count %>
+<%= column_chart @dos.group(:dos).count %>
 
 <div class='result_title'>
  <%if current_user.subscription.timer=="On"%>
@@ -89,7 +100,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @dosocial.group(:dosocial).count %>
-<%= bar_chart @dosocial.group(:dosocial).count %>
+<%= column_chart @dosocial.group(:dosocial).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -99,7 +110,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @asg.group(:asg).count %>
-<%= bar_chart @asg.group(:asg).count %>
+<%= column_chart @asg.group(:asg).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -109,7 +120,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @treasurer.group(:treasurer).count %>
-<%= bar_chart @treasurer.group(:treasurer).count %>
+<%= column_chart @treasurer.group(:treasurer).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -119,7 +130,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @firstprov.group(:firstprov).count %>
-<%= bar_chart @firstprov.group(:firstprov).count %>
+<%= column_chart @firstprov.group(:firstprov).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -129,7 +140,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @secondprov.group(:secondprov).count %>
-<%= bar_chart @secondprov.group(:secondprov).count %>
+<%= column_chart @secondprov.group(:secondprov).count %>
 
 <div class='result_title'>
   <%if current_user.subscription.timer=="On"%>
@@ -139,7 +150,7 @@ Total:<%=@president.count%>
 <%end%>
 </div>
 <%= pie_chart @pro.group(:pro).count %>
-<%= bar_chart @pro.group(:pro).count %>
+<%= column_chart @pro.group(:pro).count %>
 
 
 

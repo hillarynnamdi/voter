@@ -27,6 +27,9 @@ before_action :authenticate_user!
 	@position=current_user.subscription.aspirants.select(:position).order('position asc').distinct
 
 	@president=current_user.subscription.casters.where("president not like ''")
+	@presidentcount=current_user.subscription.aspirants.where("position like 'PRESIDENT'")
+
+
 	@vice_president=current_user.subscription.casters.where("vice_president not like ''")
 	@financial_secretary=current_user.subscription.casters.where("financial_secretary not like ''")
 	@secretary_general=current_user.subscription.casters.where("secretary_general not like ''")
