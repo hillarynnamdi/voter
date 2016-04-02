@@ -1,0 +1,11 @@
+<% if @caster.errors.any? %>
+			<div class="alert alert-danger"> 				
+					<p class='errorpara'>Oops!,An error occurred casting your vote </p>
+						<ol class='errorli'>
+						<% @caster.errors.full_messages.each do |msg| %>
+
+						<li><%= msg %></li>
+
+						<% end %>
+						</div>
+	<% end %>

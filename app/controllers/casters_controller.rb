@@ -12,13 +12,21 @@ end
 
 
 def create
+
 @user=current_user
-@subscription = Subscription.find(params[:subscription_id])
+
+
+@subscription = current_user.subscription
+
 @caster = @subscription.casters.create(caster_params)
 
-#@user.update(has_voted:true)
+if @caster.save
+	redirect_to new_subscription_caster_path(current_user.subscription.account_name.tr(' ','-'))
+     else
+      render 'new'
+  end
 
-redirect_to new_subscription_caster_path(current_user.subscription.account_name.tr(' ',''))
+#@user.update(has_voted:true)
 
 end
 

@@ -1,0 +1,33 @@
+
+<button id='sms_head' class= "btn btn-success">View SMS Metrics</button>
+<div class='sms_metrics'>
+<div>Total Number of Users: <span><%=@usersmetrics.count%></span></div>
+<div>Total SMS Token Sent:  <span><%=@userstoken.count%></span></div>
+<div>Total SMS Vote Thanks Sent: <span><%=@usersthanks.count%></span></div>
+
+<div><a href='#' id='hide_metrics' class= "btn btn-danger">Hide</a></div>
+</div>
+
+<table class='table table-striped' id="account_table_admin">
+  <thead>
+    <tr>
+      <th> First Name</th>
+      <th> Last Name</th>
+      <th> Gender</th>
+      <th>Reg No</th>
+      <th>Phone No</th>
+      <th>SMS TOKEN</th>
+      <th>THANKS MSG</th>
+
+    </tr>
+  </thead>
+  <tbody>
+<%= render 'users' %>  
+  </tbody>
+</table>
+
+<div id='pagination_div'>
+  <%=will_paginate @users,renderer: BootstrapPagination::Rails %>
+</div>
+
+

@@ -6,9 +6,14 @@ $("ul.errors").html("")
       $("ul.errors").append($("<li />").html("<%= msg.html_safe %>"))
 
     <% end %>
+
+    $(".loading").hide()
+    
 <% else %>
 
  $(".render-ajax").html("<%= escape_javascript(render partial:"paginationsubscribers",object:@subscriptions) %>")
  $("#subscription-modal").modal("hide")
+
+ $(".loading").hide()
 
 <% end %>

@@ -1,0 +1,20 @@
+     <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td> <%= user.last_name %></td>
+        <td> <%= user.gender %></td>
+        <td><%= user.reg_no %></td>
+        <td><%= user.phone_no %></td>
+        <td>
+        <%= user.has_received_token %>
+        </td>
+        <td>
+          <%= user.has_received_thanks_msg %>
+        </td>
+
+
+      </tr>
+
+
+      <% end %>
+

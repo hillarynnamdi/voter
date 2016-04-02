@@ -4,17 +4,29 @@
       <div class="modal-body">
 
       <div class='links_to_aspirants' >
-      <div><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></div>
-      <%= link_to "#{@subscription.account_name} VOTERS",subscription_users_path(@subscription), class:"btn btn-success" %></div>
+      <div><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span></div>
+      <%= link_to "#{@subscription.account_name} VOTERS",subscription_users_path(@subscription), class:"btn btn-success",id:'submit_bts' %></div>
 
       <div class='links_to_aspirants'>
-      <div><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></div>
+      <div><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span></div>
 
-      <%= link_to "#{@subscription.account_name} ASPIRANTS",subscription_aspirants_path(@subscription), class:"btn btn-success" %></div>
+      <%= link_to "#{@subscription.account_name} ASPIRANTS",subscription_aspirants_path(@subscription), class:"btn btn-success",id:'submit_bts' %></div>
+
+      <div class='links_to_aspirants'>
+      <div><span class="glyphicon glyphicon-user"></span><span class="glyphicon glyphicon-user"></span></div>
+
+      <%= link_to "MANAGE SMS",subscription_sms_path(@subscription), class:"btn btn-success",id:'submit_bts' %></div>
 
       </div>
+
+
+
+
+
       <div class="modal-footer">
-        <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+        <%= button_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
+
       </div>
   </div>
 </div>
