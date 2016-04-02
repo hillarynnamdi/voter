@@ -24,9 +24,17 @@ def create
 
 if @caster.save
 	redirect_to new_subscription_caster_path(current_user.subscription.account_name.tr(' ','-'))
+	@presidentcount=current_user.subscription.casters.where("president='#{@caster.president}' ").count
+	@first_name=@caster.president.split(' ')[0]
+	@last_name=@caster.president.split(' ')[1]
+	@presidentupdate=Aspirant.find_by(last_name:@last_name,first_name:@first_name)
+	@presidentupdate.update(number_of_votes:@presidentcount)
      else
       render 'new'
-  end
+end
+
+
+
 
 #@user.update(has_voted:true)
 
