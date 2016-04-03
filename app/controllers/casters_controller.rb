@@ -21,12 +21,8 @@ def create
 @caster = @subscription.casters.create(caster_params)
 
 if @caster.save
-	redirect_to new_subscription_caster_path(current_user.subscription.account_name.tr(' ','-'))
-	@presidentcount=current_user.subscription.casters.where("president='#{@caster.president}' ").count
-	@first_name=@caster.president.split(' ')[0]
-	@last_name=@caster.president.split(' ')[1]
-	@presidentupdate=Aspirant.find_by(last_name:@last_name,first_name:@first_name)
-	@presidentupdate.update(number_of_votes:@presidentcount)
+	#@user.update(has_voted:true)
+	redirect_to subscription_results_path(current_user.subscription.account_name.tr(' ','-'))
      else
       render 'new'
 end
@@ -34,7 +30,6 @@ end
 
 
 
-#@user.update(has_voted:true)
 
 end
 
