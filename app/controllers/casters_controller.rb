@@ -1,22 +1,20 @@
 class CastersController < ApplicationController
 before_action :authenticate_user!
+
 def new
 
 	@subscription=current_user.subscription
 	@aspirants=current_user.subscription.aspirants.order('first_name asc')
 	@caster = Caster.new
 	@position=current_user.subscription.aspirants.select(:position).order('position asc').distinct
-
 	
 end
 
 
 def create
 
-@aspirants=current_user.subscription.aspirants.order('first_name asc')
-@position=current_user.subscription.aspirants.select(:position).order('position asc').distinct
-
 @user=current_user
+
 
 @subscription = current_user.subscription
 
