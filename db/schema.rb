@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20160401050514) do
     t.string   "position"
     t.string   "statement"
     t.string   "level"
-    t.string   "dosocial"
     t.integer  "number_of_votes"
   end
 
@@ -79,8 +78,8 @@ ActiveRecord::Schema.define(version: 20160401050514) do
     t.string   "pro"
     t.integer  "subscription_id"
     t.string   "voter_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "dos"
     t.string   "welfare"
     t.string   "asg"
@@ -88,9 +87,41 @@ ActiveRecord::Schema.define(version: 20160401050514) do
     t.string   "secondprov"
     t.string   "treasurer"
     t.string   "dosocial"
+    t.string   "dos_name"
+    t.string   "welfare_name"
+    t.string   "asg_name"
+    t.string   "firstprov_name"
+    t.string   "secondprov_name"
+    t.string   "treasurer_name"
+    t.string   "dosocial_name"
+    t.string   "president_name"
+    t.string   "vice_president_name"
+    t.string   "financial_secretary_name"
+    t.string   "pro_name"
+    t.string   "secretary_general_name"
   end
 
   add_index "casters", ["subscription_id"], name: "index_casters_on_subscription_id", using: :btree
+
+  create_table "students", force: :cascade do |t|
+    t.string   "email",                   default: "chrisgeeq@gmail.com", null: false
+    t.string   "encrypted_password",      default: "password1"
+    t.string   "reg_no",                  default: "",                    null: false
+    t.string   "phone_no",                default: "",                    null: false
+    t.integer  "sign_in_count",           default: 0,                     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "authy_id"
+    t.datetime "last_sign_in_with_authy"
+    t.boolean  "authy_enabled",           default: true
+  end
+
+  add_index "students", ["authy_id"], name: "index_students_on_authy_id", using: :btree
+  add_index "students", ["reg_no"], name: "index_students_on_reg_no", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.string   "account_name"
@@ -108,13 +139,22 @@ ActiveRecord::Schema.define(version: 20160401050514) do
     t.integer  "subscription_id"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",           default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "email"
     t.string   "encrypted_password"
-    t.string   "timer"
     t.boolean  "has_voted",               default: false
     t.boolean  "has_received_token",      default: false
     t.boolean  "has_received_thanks_msg", default: false
   end
 
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["subscription_id"], name: "index_users_on_subscription_id", using: :btree
 
   add_foreign_key "aspirants", "subscriptions"
