@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   before_action :set_subscription, only: [:show, :edit, :update, :destroy, :delete]
   # GET /subscriptions
@@ -105,7 +105,6 @@ uri = URI("https://api.infobip.com/sms/1/text/single")
 Net::HTTP.start(uri.host, uri.port,
 :use_ssl => uri.scheme == 'https', 
 :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
-
 request = Net::HTTP::Post.new uri.request_uri
 request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
