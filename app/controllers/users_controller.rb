@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-#before_action :authenticate_admin!
+before_action :authenticate_admin!
  def new 
 @subscription = Subscription.find(params[:subscription_id])
 
@@ -10,6 +10,28 @@ end
 def create
 @subscription = Subscription.find(params[:subscription_id])
 @user = @subscription.users.create(user_params)
+
+if @user
+uri = URI("https://api.infobip.com/sms/1/text/single")
+
+Net::HTTP.start(uri.host, uri.port,
+:use_ssl => uri.scheme == 'https', 
+:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+request = Net::HTTP::Post.new uri.request_uri
+request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
+request["content-type"] = 'application/json'
+request["accept"] = 'application/json'
+request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},
+Your NACOSS E-voting Password is #{@user.password.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
+
+response = http.request request
+
+puts response.read_body
+
+end
+
+end
 
 
 @users = pagination
@@ -55,8 +77,6 @@ end
 
   end
 
-
-
     def show
   	@subscription = Subscription.find(params[:subscription_id])
 	@user= User.find(params[:id])
@@ -64,7 +84,7 @@ end
 
 
 def user_params
-      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no)
+      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no,:password)
     end
 
 

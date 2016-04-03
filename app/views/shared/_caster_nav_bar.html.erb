@@ -38,17 +38,20 @@
             <%= link_to  subscription_result_path(current_user.subscription.account_name.tr(' ','-'),aspirant.position) do %>
             <span class="glyphicon glyphicon-eye-open" style="color:#74b6ff"></span>  <%= aspirant.position %>
             <% end %>
-            </li> 
-            <% end %>
-
-            
+            </li>                       
           </ul>
       </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-        
-        </li>
+              <%= link_to  destroy_user_session_path,method: :delete do %>
+              <span class="glyphicon glyphicon-log-out"></span>
+               Logout(<%=@current_user.first_name.downcase%>)
+              <%end%>
+            </li>
+            </li> 
+            <% end %>
+
       </ul>
     </div>
   </div>
