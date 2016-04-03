@@ -42,7 +42,8 @@
 <%if aspirant.position=="SECRETARY GENERAL"%>
 <tr>
 <td>
-<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%image_tag "male.jpg" %>
+
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
