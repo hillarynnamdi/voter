@@ -5,7 +5,6 @@
 <div class='votewrapper1'>
 <div class='votewrapper2'>
 <div class='ontop'>
-  E-Voter >
  <span class='subscriber'>
  <span class="glyphicon glyphicon-tags"></span>
   <%=current_user.subscription.account_name%>
@@ -54,8 +53,8 @@
 </td>
 <td>
 <%= 
-(@result.where("president not like '' and president='#{f.president}'").count * 100.0)/
-@result.where("president not like ''").count
+((@result.where("president not like '' and president='#{f.president}'").count * 100.0)/
+@result.where("president not like ''").count).round(2)
 
  %>%
 </td>
@@ -106,8 +105,8 @@
 </td>
 <td>
 <%= 
-(@result.where("vice_president not like '' and vice_president='#{f.vice_president}'").count * 100.0)/
-@result.where("vice_president not like ''").count
+((@result.where("vice_president not like '' and vice_president='#{f.vice_president}'").count * 100.0)/
+@result.where("vice_president not like ''").count).round(2)
 
  %>%
 </td>
@@ -155,8 +154,8 @@
 </td>
 <td>
 <%= 
-(@result.where("secretary_general not like '' and secretary_general='#{f.secretary_general}'").count * 100.0)/
-@result.where("secretary_general not like ''").count
+((@result.where("secretary_general not like '' and secretary_general='#{f.secretary_general}'").count * 100.0)/
+@result.where("secretary_general not like ''").count).round(2)
 
  %>%
 </td>
@@ -203,8 +202,8 @@
 </td>
 <td>
 <%= 
-(@result.where("financial_secretary not like '' and financial_secretary='#{f.financial_secretary}'").count * 100.0)/
-@result.where("financial_secretary not like ''").count
+((@result.where("financial_secretary not like '' and financial_secretary='#{f.financial_secretary}'").count * 100.0)/
+@result.where("financial_secretary not like ''").count).round(2)
 
  %>%
 </td>
@@ -253,8 +252,8 @@
 </td>
 <td>
 <%= 
-(@result.where("welfare not like '' and welfare='#{f.welfare}'").count * 100.0)/
-@result.where("welfare not like ''").count
+((@result.where("welfare not like '' and welfare='#{f.welfare}'").count * 100.0)/
+@result.where("welfare not like ''").count).round(2)
 
  %>%
 </td>
@@ -301,8 +300,8 @@
 </td>
 <td>
 <%= 
-(@result.where("dos not like '' and dos='#{f.dos}'").count * 100.0)/
-@result.where("dos not like ''").count
+((@result.where("dos not like '' and dos='#{f.dos}'").count * 100.0)/
+@result.where("dos not like ''").count).round(2)
 
  %>%
 </td>
@@ -349,8 +348,8 @@
 </td>
 <td>
 <%= 
-(@result.where("dosocial not like '' and dosocial='#{f.dosocial}'").count * 100.0)/
-@result.where("dosocial not like ''").count
+((@result.where("dosocial not like '' and dosocial='#{f.dosocial}'").count * 100.0)/
+@result.where("dosocial not like ''").count).round(2)
 
  %>%
 </td>
@@ -398,8 +397,8 @@
 </td>
 <td>
 <%= 
-(@result.where("asg not like '' and asg='#{f.asg}'").count * 100.0)/
-@result.where("asg not like ''").count
+((@result.where("asg not like '' and asg='#{f.asg}'").count * 100.0)/
+@result.where("asg not like ''").count).round(2)
 
  %>%
 </td>
@@ -446,8 +445,8 @@
 </td>
 <td>
 <%= 
-(@result.where("treasurer not like '' and treasurer='#{f.treasurer}'").count * 100.0)/
-@result.where("treasurer not like ''").count
+((@result.where("treasurer not like '' and treasurer='#{f.treasurer}'").count * 100.0)/
+@result.where("treasurer not like ''").count).round(2)
 
  %>%
 </td>
@@ -494,8 +493,8 @@
 </td>
 <td>
 <%= 
-(@result.where("firstprov not like '' and firstprov='#{f.firstprov}'").count * 100.0)/
-@result.where("firstprov not like ''").count
+((@result.where("firstprov not like '' and firstprov='#{f.firstprov}'").count * 100.0)/
+@result.where("firstprov not like ''").count).round(2)
 
  %>%
 </td>
@@ -543,8 +542,8 @@
 </td>
 <td>
 <%= 
-(@result.where("secondprov not like '' and secondprov='#{f.secondprov}'").count * 100.0)/
-@result.where("secondprov not like ''").count
+((@result.where("secondprov not like '' and secondprov='#{f.secondprov}'").count * 100.0)/
+@result.where("secondprov not like ''").count).round(2)
 
  %>%
 </td>
@@ -592,8 +591,8 @@
 </td>
 <td>
 <%= 
-(@result.where("pro not like '' and pro='#{f.pro}'").count * 100.0)/
-@result.where("pro not like ''").count
+((@result.where("pro not like '' and pro='#{f.pro}'").count * 100.0)/
+@result.where("pro not like ''").count).round(2)
 
  %>%
 </td>
