@@ -25,7 +25,7 @@ def create
   	  @users =@subscription.users.where("first_name LIKE '#{params[:search]}%' or last_name LIKE '#{params[:search]}%' or phone_no LIKE '#{params[:search].to_s}%' or reg_no LIKE '#{params[:search].to_s}%'").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
     
     else
-   	 @users =pagination
+   	 @users =pagination 
   	 
 end
 
