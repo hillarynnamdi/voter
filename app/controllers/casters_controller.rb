@@ -3,9 +3,10 @@ before_action :authenticate_user!
 
 def new
 
+
 	@subscription=current_user.subscription
 	@aspirants=current_user.subscription.aspirants.order('first_name asc')
-	@caster = Caster.new
+	@caster = @subscription.casters.new
 	@position=current_user.subscription.aspirants.select(:position).order('position asc').distinct
 	
 end
@@ -14,7 +15,8 @@ end
 def create
 
 @user=current_user
-
+@position=current_user.subscription.aspirants.select(:position).order('position asc').distinct
+@aspirants=current_user.subscription.aspirants.order('first_name asc')
 
 @subscription = current_user.subscription
 
