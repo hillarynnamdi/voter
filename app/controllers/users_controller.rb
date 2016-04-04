@@ -20,8 +20,7 @@ request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
 request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},
-Your NACOSS E-voting Password is #{@user.password.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
 
 response = http.request request
 
@@ -74,14 +73,14 @@ request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
 request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},
-Your NACOSS E-voting Password is,follow this link to vote bit.ly/1RT5K9x\"}"
+@generated=Devise.friendly_token.first(8)
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@generated.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
 
 response = http.request request
 
 puts response.read_body
 
-@user.update(password:Devise.friendly_token.first(8))
+@user.update(password:@generated)
 
 end
   

@@ -15,8 +15,12 @@
 <%if aspirant.position=="PRESIDENT"%>
 <tr>
 <td>
+
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
- <%= aspirant.first_name%> <%=aspirant.last_name%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
    <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
  <td><div class="radio"> 
@@ -42,8 +46,11 @@
 <%if aspirant.position=="SECRETARY GENERAL"%>
 <tr>
 <td>
-<%image_tag "male.jpg" %>
-
+<%if aspirant.image? %>
+<%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -75,7 +82,11 @@
 <%if aspirant.position=="VICE PRESIDENT"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "female.png",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -103,7 +114,11 @@
 <%if aspirant.position=="FINANCIAL SECRETARY"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -134,7 +149,11 @@
 <%if aspirant.position=="PRO"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -161,7 +180,11 @@
 <%if aspirant.position=="ASSISTANT SEC GEN"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "female.png",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -192,7 +215,11 @@
 <%if aspirant.position=="DIRECTOR OF WELFARE"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -219,7 +246,11 @@
 <%if aspirant.position=="DIRECTOR OF SPORTS" %>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -250,7 +281,11 @@
 <%if aspirant.position=="PROVOST1"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -277,7 +312,11 @@
 <%if aspirant.position=="PROVOST2"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -308,7 +347,11 @@
 <%if aspirant.position=="TREASURER"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "female.png",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
@@ -335,7 +378,11 @@
 <%if aspirant.position=="DIRECTOR OF SOCIALS"%>
 <tr>
 <td>
+<%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
+<%else%>
+<%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
+<%end%>
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
  </td>
