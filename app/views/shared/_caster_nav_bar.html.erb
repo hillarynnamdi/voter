@@ -38,7 +38,9 @@
             <%= link_to  subscription_result_path(current_user.subscription.account_name.tr(' ','-'),aspirant.position) do %>
             <span class="glyphicon glyphicon-eye-open" style="color:#74b6ff"></span>  <%= aspirant.position %>
             <% end %>
-            </li>                       
+
+            </li>
+            <% end %>                       
           </ul>
       </li>
       </ul>
@@ -49,8 +51,7 @@
                Logout(<%=@current_user.first_name.downcase%>)
               <%end%>
             </li>
-            </li> 
-            <% end %>
+            
 
       </ul>
     </div>

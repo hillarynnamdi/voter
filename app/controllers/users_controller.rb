@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-before_action :authenticate_admin!
+#before_action :authenticate_admin!
  def new 
 @subscription = Subscription.find(params[:subscription_id])
 
-@generated_password = Devise.friendly_token.first(8)
 
 end
 
@@ -11,8 +10,21 @@ def create
 @subscription = Subscription.find(params[:subscription_id])
 @user = @subscription.users.create(user_params)
 
+uri = URI("https://api.infobip.com/sms/1/text/single")
 
-end
+Net::HTTP.start(uri.host, uri.port,
+:use_ssl => uri.scheme == 'https', 
+:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+request = Net::HTTP::Post.new uri.request_uri
+request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
+request["content-type"] = 'application/json'
+request["accept"] = 'application/json'
+request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
+
+response = http.request request
+
+puts response.read_body
 
 end
 
@@ -46,8 +58,37 @@ end
     def update
       @subscription = Subscription.find(params[:subscription_id])
  @user = User.find(params[:id])
- @user.update(user_params)
+ if params[:sms]
+  @user.update(update_userparams)
   @users = pagination
+
+  if @user
+uri = URI("https://api.infobip.com/sms/1/text/single")
+
+Net::HTTP.start(uri.host, uri.port,
+:use_ssl => uri.scheme == 'https', 
+:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+request = Net::HTTP::Post.new uri.request_uri
+request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
+request["content-type"] = 'application/json'
+request["accept"] = 'application/json'
+request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
+@generated=Devise.friendly_token.first(8)
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@generated.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
+
+response = http.request request
+
+puts response.read_body
+
+@user.update(password:@generated)
+
+end
+  
+else
+  @user.update(user_params)
+  @users = pagination
+end
+end
     
  
 end
@@ -68,6 +109,10 @@ end
 
 def user_params
       params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no,:password)
+    end
+
+def update_userparams
+      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no)
     end
 
 

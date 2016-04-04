@@ -43,6 +43,9 @@
           <div id='acct_style'>Phone No.: (e.g +23480333XXXXX)</div>
       <%= f.text_area :phone_no, class: "form-control",value:'+234' %>
 
+      <%= f.hidden_field :password, value:Devise.friendly_token.first(8)
+ %>
+
         </div>
 
 
