@@ -24,27 +24,31 @@ def create
 
 if @caster.save
 	@user.update(has_voted:true)
-	uri = URI("https://api.infobip.com/sms/1/text/single")
+	#uri = URI("https://api.infobip.com/sms/1/text/single")
 
-Net::HTTP.start(uri.host, uri.port,
-:use_ssl => uri.scheme == 'https', 
-:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
-request = Net::HTTP::Post.new uri.request_uri
-request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
-request["content-type"] = 'application/json'
-request["accept"] = 'application/json'
-request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{current_user.phone_no}\",\"text\":\"Hi #{current_user.first_name},Thanks for voting! Your vote has been saved.\"}"
+#Net::HTTP.start(uri.host, uri.port,
+#:use_ssl => uri.scheme == 'https', 
+#:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+#request = Net::HTTP::Post.new uri.request_uri
+#request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
+#request["content-type"] = 'application/json'
+#request["accept"] = 'application/json'
+#request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
+#request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{current_user.phone_no}\",\"text\":\"Hi #{current_user.first_name},Thanks for voting! Your vote has been saved.\"}"
 
-response = http.request request
+#response = http.request request
 
-puts response.read_body
+#puts response.read_body
 
-end
+#end
 
-	redirect_to subscription_results_path(current_user.subscription.account_name.tr(' ','-'))
-     else
-      render 'new'
+	#redirect_to subscription_results_path(current_user.subscription.account_name.tr(' ','-'))
+     #else
+      flash[:saved_vote]= "VOTED SUCCESSFULLY"
+      redirect_to new_subscription_caster_path
+      
+  else
+  	render 'new'
 end
 
 

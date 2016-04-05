@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
 	before_validation { self.first_name = first_name.upcase }
 	before_validation { self.last_name = last_name.upcase }
+	#before_save :downcase_password
 
 
     validates :first_name, presence: true
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
 	validates :reg_no, presence: true
 	validates :reg_no, length: {minimum:10} ,if: "reg_no.present?"
 	validates :reg_no, length: {maximum:11} ,if: "reg_no.present?"
-	validates :reg_no, uniqueness: {case_sensitivity:false} ,if: "reg_no.present?"
+	validates :reg_no, uniqueness: {case_sensitive:false} ,if: "reg_no.present?"
 
 	validates :phone_no, presence: true
 	validates :phone_no, length: {minimum:11} ,if: "phone_no.present?"
