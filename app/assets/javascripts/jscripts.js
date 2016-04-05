@@ -66,6 +66,16 @@ $("#sms_head").show()
 }
 )
 
+$(document).on('click','#reset_bt', 
+function(){
+
+$(':radio').attr({checked:false})
+
+return false;
+
+}
+)
+
 
 
 

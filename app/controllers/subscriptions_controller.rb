@@ -159,6 +159,20 @@ end
 
 end
 
+def results_admin
+
+  @subscription=Subscription.find(params[:subscription_id]);
+  @aspirants=@subscription.aspirants.order('first_name asc')
+  @position=@subscription.aspirants.select(:position).order('position asc').distinct
+
+  @result=@subscription.casters
+  @aspirantcount=@subscription.aspirants
+  
+
+
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscription

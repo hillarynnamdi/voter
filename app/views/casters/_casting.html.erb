@@ -408,7 +408,7 @@
 <div class="row" style="border-top:1px solid #eeeeee;padding:10px">
   <div class="col-sm-12">
       <%= f.hidden_field :voter_id, value:current_user.id %>
-       <%= f.submit "Cast Vote", class: "btn btn-primary btn-lg" %>
+       <a href='#' class="btn btn-danger btn-lg" id='reset_bt'>Reset</a> <%= f.submit "Cast Vote", class: "btn btn-primary btn-lg" %>
 
 </div>
 </div>
