@@ -5,13 +5,10 @@
 <div class='votewrapper1'>
 <div class='votewrapper2'>
 <div class='ontop'>
- <span class='subscriber'>
- <span class="glyphicon glyphicon-envelope"></span>
-  <%=current_user.subscription.account_name%>
-  </span>
+
 </div>
 
-<%=render "shared/caster_nav_bar" %>
+<%=render "shared/nav_bar" %>
 
 <div class='results_div'>
 
@@ -19,14 +16,12 @@
 
 
 <div class='result_title'>
-<%if current_user.subscription.timer=="On"%>
+<%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"> </span> President's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> President's Result 
 <%end%>
 </div>
-
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("president not like ''").group(:president).count %>
 <%= pie_chart @result.where("president not like ''").group(:president).count %>
@@ -68,49 +63,18 @@
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>President's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:president).where("president not like ''").group(:president).each do |f| %>
-  <tr>
-<td> <%=f.president%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("president not like ''").count%></span></td></tr>
-</table>
-</div>
-
-<%end%>
 
 
 
 
 
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Vice President's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Vice President's Result 
 <%end%>
 </div>
-
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 
 <div>
 <%= column_chart @result.where("vice_president not like ''").group(:vice_president).count %>
@@ -152,51 +116,20 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Vice President's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:vice_president).where("vice_president not like ''").group(:vice_president).each do |f| %>
-  <tr>
-<td> <%=f.vice_president%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("vice_president not like ''").count%></span></td></tr>
-</table>
-</div>
-
-<%end%>
-
 
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Sec. Gen.'s Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Sec. Gen.'s Result 
 <%end%>
 </div>
 
-
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("secretary_general not like ''").group(:secretary_general).count %>
 <%= pie_chart @result.where("secretary_general not like ''").group(:secretary_general).count %>
 </div>
+
 
 <div class='vote_metrics'>
 <div class='metrics_head'>SEC. GENERAL'S METRICS</div>
@@ -232,49 +165,14 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Sec. General'S Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:secretary_general).where("secretary_general not like ''").group(:secretary_general).each do |f| %>
-  <tr>
-<td> <%=f.secretary_general%></td><td> <span class='score'><%= @result.where("secretary_general not like '' and secretary_general='#{f.secretary_general}'").count %></span>
-</td>
-<td>
-<%= 
-((@result.where("secretary_general not like '' and secretary_general='#{f.secretary_general}'").count * 100.0)/
-@result.where("secretary_general not like ''").count).round(2)
-
- %>%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("secretary_general not like ''").count%></span></td></tr>
-</table>
-</div>
-<%end%>
-
 
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Fin. Sec.'s Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Fin. Sec.'s Result 
 <%end%>
 </div>
-
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("financial_secretary not like ''").group(:financial_secretary).count %>
 <%= pie_chart @result.where("financial_secretary not like ''").group(:financial_secretary).count %>
@@ -316,47 +214,15 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Fin. Sec's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:financial_secretary).where("financial_secretary not like ''").group(:financial_secretary).each do |f| %>
-  <tr>
-<td> <%=f.financial_secretary%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("financial_secretary not like ''").count%></span></td></tr>
-</table>
-</div>
-
-<%end%>
-
 
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Dir. OF Welfare's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Dir. OF Welfare's Result 
 <%end%>
 </div>
 
-<%if current_user.subscription.timer=="Off" && @result>0%>
 <div>
 <%= column_chart @result.where("welfare not like ''").group(:welfare).count %>
 <%= pie_chart @result.where("welfare not like ''").group(:welfare).count %>
@@ -397,46 +263,14 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Dir. Of Welfare's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:welfare).where("welfare not like ''").group(:welfare).each do |f| %>
-  <tr>
-<td> <%=f.welfare%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("welfare not like ''").count%></span></td></tr>
-</table>
-</div>
-
-
-<%end%>
-
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Dir. of Sport's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Dir. of Sport's Result 
 <%end%>
 </div>
 
-<%if current_user.subscription.timer=="Off" && @result>0%>
 <div>
 <%= column_chart @result.where("dos not like ''").group(:dos).count %>
 <%= pie_chart @result.where("dos not like ''").group(:dos).count %>
@@ -477,47 +311,14 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Dir. Of Sport's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:dos).where("dos not like ''").group(:dos).each do |f| %>
-  <tr>
-<td> <%=f.dos%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("dos not like ''").count%></span></td></tr>
-</table>
-</div>
-
-<%end%>
-
-
-
-
 <div class='result_title'>
- <%if current_user.subscription.timer=="On"%>
+ <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Dir. of Social's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Dir. of Social's Result 
 <%end%>
 </div>
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
+
 <div>
 <%= column_chart @result.where("dosocial not like ''").group(:dosocial).count %>
 <%= pie_chart @result.where("dosocial not like ''").group(:dosocial).count %>
@@ -558,45 +359,14 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Dir. Of Social's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:dosocial).where("dosocial not like ''").group(:dosocial).each do |f| %>
-  <tr>
-<td> <%=f.dosocial%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("dosocial not like ''").count%></span></td></tr>
-</table>
-</div>
-
-<%end%>
-
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Ass. Sec. General's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Ass. Sec. General's Result 
 <%end%>
 </div>
 
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("asg not like ''").group(:asg).count %>
 <%= pie_chart @result.where("asg not like ''").group(:asg).count %>
@@ -637,47 +407,15 @@ X%
 </div>
 </div>
 </div>
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Ass. Sec. Gen.'s Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:asg).where("asg not like ''").group(:asg).each do |f| %>
-  <tr>
-<td> <%=f.asg%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("asg not like ''").count%></span></td></tr>
-</table>
-</div>
-
-
-<% end%>
-
 
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Treasurer's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Treasurer's Result 
 <%end%>
 </div>
 
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("treasurer not like ''").group(:treasurer).count %>
 <%= pie_chart @result.where("treasurer not like ''").group(:treasurer).count %>
@@ -718,40 +456,8 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Treasurer's Result is being computed by system,check back at 3PM.</div>
-
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:treasurer).where("treasurer not like ''").group(:treasurer).each do |f| %>
-  <tr>
-<td> <%=f.treasurer%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr><td>&nbsp;</td><td><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("treasurer not like ''").count%></span></td><td>&nbsp;</td></tr>
-</table>
-</div>
-
-
-<% end %>
-
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
  <span class="glyphicon glyphicon-info-sign"></span> Provost1's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Provost1's Result 
@@ -759,7 +465,6 @@ X%
 </div>
 
 <div>
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <%= column_chart @result.where("firstprov not like ''").group(:firstprov).count %>
 <%= pie_chart @result.where("firstprov not like ''").group(:firstprov).count %>
 </div>
@@ -801,46 +506,13 @@ X%
 </div>
 </div>
 
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Provost1's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:firstprov).where("firstprov not like ''").group(:firstprov).each do |f| %>
-  <tr>
-<td> <%=f.firstprov%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("firstprov not like ''").count%></span></td></tr>
-
-</table>
-</div>
-
-<%end%>
-
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> Provost2's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> Provost2's Result 
 <%end%>
 </div>
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("secondprov not like ''").group(:secondprov).count %>
 <%= pie_chart @result.where("secondprov not like ''").group(:secondprov).count %>
@@ -881,53 +553,15 @@ X%
 </div>
 </div>
 </div>
-<% else %>
-
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Provost2's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:secondprov).where("secondprov not like ''").group(:secondprov).each do |f| %>
-  <tr>
-<td> <%=f.secondprov%></td><td> <span class='score'><%= @result.where("secondprov not like '' and secondprov='#{f.secondprov}'").count %></span>
-</td>
-<td>
-<%= 
-((@result.where("secondprov not like '' and secondprov='#{f.secondprov}'").count * 100.0)/
-@result.where("secondprov not like ''").count).round(2)
-
- %>%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("secondprov not like ''").count%></span></td></tr>
-</table>
-</div>
-
-
-<%end%>
-
-
 
 <div class='result_title'>
-  <%if current_user.subscription.timer=="On"%>
+  <%if @subscription.timer=="On"%>
   <span class="glyphicon glyphicon-info-sign"></span> PRO's Result So Far
   <%else%>
   <span class="glyphicon glyphicon-info-sign"></span> PRO's Result 
 <%end%>
 </div>
 
-<%if current_user.subscription.timer=="Off" && @result.count>0%>
 <div>
 <%= column_chart @result.where("pro not like ''").group(:pro).count %>
 <%= pie_chart @result.where("pro not like ''").group(:pro).count %>
@@ -969,36 +603,7 @@ X%
 </div>
 </div>
 
-<% else %>
 
-<div class='hide_result_user'><%=image_tag 'ajax.gif'%>Pro's Result is being computed by system,check back at 3PM.</div>
-
-<div class='aspirant_count'>
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th><label class="glyphicon glyphicon-user"></label><label class="glyphicon glyphicon-user"></label></th>
-      <th><label class="glyphicon glyphicon-stats"></label></th>
-      <th><label class="glyphicon glyphicon-flash"></label></th>
-
-      </tr>
-      </thead>
-  <% @result.select(:pro).where("pro not like ''").group(:pro).each do |f| %>
-  <tr>
-<td> <%=f.pro%></td><td>X
-</td>
-<td>
-X%
-</td>
-</tr>
-<%end%>
-<tr><td colspan="3">&nbsp;</td></tr>
-
-<tr><td colspan="3"><label class="glyphicon glyphicon-hand-right"></label> Total Number of Votes: <span><%=@result.where("pro not like ''").count%></span></td></tr>
-</table>
-</div>
-
-<%end%>
 
 
 

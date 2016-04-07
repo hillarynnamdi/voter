@@ -28,13 +28,13 @@
         <% if @subscription.present? %>
         <li>
         <%= link_to  subscription_aspirants_path do %>
-          <span class="glyphicon glyphicon-user"></span> <%= @subscription.account_name %> Aspirants
+          <span class="glyphicon glyphicon-user"></span> <%= @subscription.account_name.split(' ')[0] %> Aspirants
         <%end%>
         </li>
 
         <li>
         <%= link_to  subscription_users_path do %>
-          <span class="glyphicon glyphicon-user"></span> <%= @subscription.account_name %> Users
+          <span class="glyphicon glyphicon-user"></span> <%= @subscription.account_name.split(' ')[0] %> Users
         <%end%>
         </li>
 

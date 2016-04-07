@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :results
       get "add"
       get "sms"
+      get "results_admin"
       post "send_smstoken"
       post "send_smsthanks"
   end
