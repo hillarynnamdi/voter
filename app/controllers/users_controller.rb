@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :authenticate_admin!
+#before_action :authenticate_admin!
  def new 
 @subscription = Subscription.find(params[:subscription_id])
 
@@ -10,29 +10,11 @@ def create
 @subscription = Subscription.find(params[:subscription_id])
 @user = @subscription.users.create(user_params)
 
-uri = URI("https://api.infobip.com/sms/1/text/single")
+@user.update(sent_token:'Not Sent')
 
-Net::HTTP.start(uri.host, uri.port,
-:use_ssl => uri.scheme == 'https', 
-:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
-request = Net::HTTP::Post.new uri.request_uri
-request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
-request["content-type"] = 'application/json'
-request["accept"] = 'application/json'
-request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
-
-response = http.request request
-
-puts response.read_body
+@users = pagination 
 
 end
-
-
-@users = pagination
-
-    
-  end
 
  
 
@@ -58,11 +40,14 @@ end
     def update
       @subscription = Subscription.find(params[:subscription_id])
  @user = User.find(params[:id])
- if params[:sms]
-  @user.update(update_userparams)
-  @users = pagination
 
-  if @user
+
+  if @user.update(update_userparams)
+
+if params[:sms]=="token"
+
+   
+    require 'json'
 uri = URI("https://api.infobip.com/sms/1/text/single")
 
 Net::HTTP.start(uri.host, uri.port,
@@ -72,23 +57,51 @@ request = Net::HTTP::Post.new uri.request_uri
 request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
-request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
+request.basic_auth 'chrisgeek', 'ifeanyi29'
 @generated=Devise.friendly_token.first(8)
 request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@generated.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
 
 response = http.request request
 
 puts response.read_body
+data = JSON.parse(response.body)
+@user.update(sent_token:data['messages'][0]['status']['groupName'])
+end
 
 @user.update(password:@generated)
 
+
+elsif params[:sms]=="thanks"
+
+   @user.update(update_userparams)
+    require 'json'
+uri = URI("https://api.infobip.com/sms/1/text/single")
+
+Net::HTTP.start(uri.host, uri.port,
+:use_ssl => uri.scheme == 'https', 
+:verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
+request = Net::HTTP::Post.new uri.request_uri
+request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
+request["content-type"] = 'application/json'
+request["accept"] = 'application/json'
+request.basic_auth 'chrisgeek', 'ifeanyi29'
+@generated=Devise.friendly_token.first(8)
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Thanks for voting! Your vote has been saved.\"}"
+
+response = http.request request
+
+puts response.read_body
+data = JSON.parse(response.body)
+@user.update(sent_thanks:data['messages'][0]['status']['groupName'])
+
 end
-  
-else
-  @user.update(user_params)
-  @users = pagination
+
 end
+
+  @users = @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
 end
+
+
     
  
 end
@@ -106,9 +119,14 @@ end
 	@user= User.find(params[:id])
   end
 
+def pagination
+  @subscription = Subscription.find(params[:subscription_id])
+  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+
+    end
 
 def user_params
-      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no,:password)
+      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no)
     end
 
 def update_userparams
@@ -116,10 +134,6 @@ def update_userparams
     end
 
 
-    def pagination
-  @subscription = Subscription.find(params[:subscription_id])
-  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
-
-    end
+    
 
 end

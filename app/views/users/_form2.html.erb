@@ -45,8 +45,19 @@
         </div>
 
 
+
+
  <div class="form-group">
-          <div id='acct_style'><span class="glyphicon envelope"></span> Resend SMS <%= check_box_tag(:sms) %></div>
+ <div class="row">
+  <div class="col-sm-4">
+          <div id='acct_style'><span class="glyphicon envelope"></span> Resend SMS Token
+          <%=radio_button_tag 'sms', 'token'%></div></div>
+
+      <div class="col-sm-4">     <div id='acct_style'><span class="glyphicon envelope"></span> Resend SMS Thanks 
+          <%=radio_button_tag 'sms', 'thanks'%></div> </div>
+<div class="col-sm-4">
+          ( <a href='#'  id='reset_bt'>Uncheck</a> ) </div>
+
 
         </div>
 

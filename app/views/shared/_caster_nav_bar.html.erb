@@ -24,14 +24,13 @@
             <% end %>
           </ul>
       </li>
-          
-          <% @position.each do |aspirant| %>
-            <li>
-            <%= link_to  subscription_result_path(current_user.subscription.account_name.tr(' ','-'),aspirant.position) do %>
-            <span class="glyphicon glyphicon-eye-open" style="color:#74b6ff"></span>  <%= aspirant.position %>
+
+      <li>
+            <%= link_to  subscription_results_path(current_user.subscription.account_name.tr(' ','-')) do %>
+            <span class="glyphicon glyphicon-plus"></span> Results
             <% end %>
             </li>
-            <% end %>                       
+                               
           </ul>
       </li>
       </ul>

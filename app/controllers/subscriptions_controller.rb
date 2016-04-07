@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
 
   before_action :set_subscription, only: [:show, :edit, :update, :destroy, :delete]
   # GET /subscriptions
@@ -88,8 +88,8 @@ def sms
    end
 
    @usersmetrics = @subscription.users
-   @userstoken=@subscription.users.where("has_received_token='true'")
-   @usersthanks=@subscription.users.where("has_received_thanks_msg='true'")
+   @userstoken=@subscription.users.where("sent_token= 'PENDING' or sent_token = 'ACCEPTED' or sent_token = 'DELIVERED' ")
+   @usersthanks=@subscription.users.where("sent_thanks= 'PENDING' or sent_thanks='ACCEPTED' or sent_thanks = 'DELIVERED' ")
 
 
 end
@@ -99,9 +99,11 @@ def send_smstoken
 @subscription = Subscription.find(params[:subscription_id])
         
 
- @subscription.users.each do |user|
+ @subscription.users.where("sent_token !='PENDING'").each do |user|
 
+ require 'json'
 uri = URI("https://api.infobip.com/sms/1/text/single")
+
 Net::HTTP.start(uri.host, uri.port,
 :use_ssl => uri.scheme == 'https', 
 :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
@@ -109,20 +111,24 @@ request = Net::HTTP::Post.new uri.request_uri
 request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
-request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
-@newpassword=Devise.friendly_token.first(8)
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{user.phone_no}\",\"text\":\"Hi #{user.first_name},Your NACOSS E-voting Password is #{@newpassword}\"}"
+request.basic_auth 'chrisgeek', 'ifeanyi29'
+@generated=Devise.friendly_token.first(8)
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{user.phone_no}\",\"text\":\"Hi #{user.first_name},Your NACOSS E-voting Password is #{@generated.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
 
 response = http.request request
 
 puts response.read_body
+data = JSON.parse(response.body)
+user.update(sent_token:data['messages'][0]['status']['groupName'])
 end
 
-    #message.update_attribute('sender_status', 1) if message.sender_id == current_user.id
-    #message.update_attribute('recipient_status', 1) if message.recipient_id == current_user.id
-    #message.destroy if message.sender_status == 1 && message.recipient_status == 1
-  end
+user.update(password:@generated)
 
+
+
+
+  end
+redirect_to subscription_sms_path(@subscription)
 
 end
 

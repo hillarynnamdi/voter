@@ -1,3 +1,4 @@
+<%= provide(:title ,' SMS')%>
 <div class='wrapper'>
 
 <%= render "shared/nav_bar" %>
@@ -30,7 +31,7 @@
 
 
 <div class='new'>
-<%= button_to "Send SMS Token", subscription_send_smstoken_path, remote: true, class: "btn btn-info" %> 
+<%= button_to "Send SMS Token", subscription_send_smstoken_path, class: "btn btn-info" %> 
 <br>
 <%= button_to "Send Vote Thanks", subscription_send_smsthanks_path, remote: true, class: "btn btn-primary" %>
 </div>
