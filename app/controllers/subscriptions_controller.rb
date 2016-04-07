@@ -123,6 +123,7 @@ user.update(sent_token:data['messages'][0]['status']['groupName'])
 end
 
 user.update(password:@generated)
+user.update(unencrypted_password:@user.password.to_s)
 
 
 

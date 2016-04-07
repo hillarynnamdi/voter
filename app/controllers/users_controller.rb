@@ -12,9 +12,12 @@ def create
 
 @user.update(sent_token:'Not Sent')
 
-@users = pagination 
 
-end
+
+@users = pagination
+
+    
+  end
 
  
 
@@ -38,7 +41,7 @@ end
   end
 
     def update
-      @subscription = Subscription.find(params[:subscription_id])
+ @subscription = Subscription.find(params[:subscription_id])
  @user = User.find(params[:id])
 
 
