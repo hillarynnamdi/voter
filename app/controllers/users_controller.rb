@@ -9,7 +9,6 @@ end
 def create
 @subscription = Subscription.find(params[:subscription_id])
 @user = @subscription.users.create(user_params)
-
 uri = URI("https://api.infobip.com/sms/1/text/single")
 
 Net::HTTP.start(uri.host, uri.port,
@@ -19,7 +18,7 @@ request = Net::HTTP::Post.new uri.request_uri
 request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
-request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
+request.basic_auth 'chrisgeek','ifeanyi29'
 request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{@user.phone_no}\",\"text\":\"Hi #{@user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
 
 response = http.request request
@@ -27,7 +26,7 @@ response = http.request request
 puts response.read_body
 
 end
-
+@user.update(unencrypted_password:@user.password.to_s)
 
 @users = pagination
 
@@ -56,7 +55,7 @@ end
   end
 
     def update
-      @subscription = Subscription.find(params[:subscription_id])
+ @subscription = Subscription.find(params[:subscription_id])
  @user = User.find(params[:id])
  if params[:sms]
   @user.update(update_userparams)
