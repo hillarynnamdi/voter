@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160406070406) do
-=======
 ActiveRecord::Schema.define(version: 20160407182009) do
->>>>>>> 032fc4c168ea33312fe9578f5a9fbec2c222256d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,12 +113,9 @@ ActiveRecord::Schema.define(version: 20160407182009) do
     t.boolean  "has_voted",               default: false
     t.boolean  "has_received_token",      default: false
     t.boolean  "has_received_thanks_msg", default: false
-<<<<<<< HEAD
     t.string   "sent_token"
     t.string   "sent_thanks"
-=======
     t.string   "unencrypted_password"
->>>>>>> 032fc4c168ea33312fe9578f5a9fbec2c222256d
   end
 
   add_index "users", ["subscription_id"], name: "index_users_on_subscription_id", using: :btree

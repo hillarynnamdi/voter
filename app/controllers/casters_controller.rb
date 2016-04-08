@@ -23,6 +23,8 @@ def create
 @caster = @subscription.casters.create(caster_params)
 
 if @caster.save
+
+	
 	require 'json'
 	@user.update(has_voted:true)
 uri = URI("https://api.infobip.com/sms/1/text/single")

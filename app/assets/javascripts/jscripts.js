@@ -52,6 +52,7 @@ function(){
 $(".sms_metrics").show()
 
 $(this).hide()
+return false;
 
 }
 )
@@ -62,6 +63,8 @@ function(){
 $(".sms_metrics").hide()
 
 $("#sms_head").show()
+
+return false;
 
 }
 )

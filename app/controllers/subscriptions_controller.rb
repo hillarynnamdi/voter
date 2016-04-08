@@ -123,7 +123,7 @@ user.update(sent_token:data['messages'][0]['status']['groupName'])
 end
 
 user.update(password:@generated)
-user.update(unencrypted_password:@user.password.to_s)
+user.update(unencrypted_password:@generated)
 
 
 
@@ -136,9 +136,8 @@ end
 def send_smsthanks
 @subscription = Subscription.find(params[:subscription_id])
 
-  @users = @subscription.users.all
-    @users.each do |user|
-      
+@subscription.users.where("sent_thanks !='PENDING' and has_voted=true ").each do |user|
+
 uri = URI("https://api.infobip.com/sms/1/text/single")
 
 Net::HTTP.start(uri.host, uri.port,
@@ -150,11 +149,16 @@ request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
 request.basic_auth 'hillarynnamdi', 'hillarynnamdi'
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{user.phone_no}\",\"text\":\"Hi #{user.first_name},Your NACOSS E-voting Password is #{@user.password.to_s}\"}"
+
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{user.phone_no}\",\"text\":\"Hi #{user.first_name},Thanks for voting! Your vote has been saved.\"}"
+
 
 response = http.request request
 
 puts response.read_body
+data = JSON.parse(response.body)
+user.update(sent_thanks:data['messages'][0]['status']['groupName'])
+
 
 end
 
@@ -162,7 +166,7 @@ end
     end
 
 
-
+redirect_to subscription_sms_path(@subscription)
 
 end
 

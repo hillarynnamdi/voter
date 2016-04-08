@@ -11,13 +11,15 @@ def create
 @user = @subscription.users.create(user_params)
 
 @user.update(sent_token:'Not Sent')
+@user.update(sent_thanks:'Not Sent')
 
-
+@user.update(unencrypted_password:@user.password.to_s)
 
 @users = pagination
 
     
-  end
+end
+
 
  
 
@@ -72,6 +74,7 @@ data = JSON.parse(response.body)
 end
 
 @user.update(password:@generated)
+@user.update(unencrypted_password:@generated.to_s)
 
 
 elsif params[:sms]=="thanks"
@@ -129,7 +132,7 @@ def pagination
     end
 
 def user_params
-      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no)
+      params.require(:user).permit(:first_name, :last_name, :gender, :reg_no, :phone_no,:password)
     end
 
 def update_userparams
