@@ -2,7 +2,6 @@
 
 
 <ul class="nav nav-tabs">
-  <li><a data-toggle="tab" href="#developer">Developers</a></li>
   <li class="active"><a data-toggle="tab" href="#evoter">E-Voting</a></li>
 </ul>
 
@@ -26,8 +25,8 @@
 <%end%>
 
   <div class="form-inputs">
-   <div class='text_login'><span class="glyphicon glyphicon-user"></span> Registration Number</div>
-    <%= f.text_field :reg_no,class: "form-control",placeholder:"e.g 20111778000",required: true, autofocus: true %>
+   <div class='text_login'><span class="glyphicon glyphicon-user"></span> Reg No or Phone No</div>
+    <%= f.text_field :reg_no,class: "form-control",placeholder:"e.g 20111778000 or +23480333XXXXX",required: true, autofocus: true %>
     </div>
   <div class="form-inputs">
   <div class='text_login'><span class="glyphicon glyphicon-lock"></span> Password</div>
