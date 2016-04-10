@@ -13,7 +13,7 @@ def create
 @user.update(sent_token:'Not Sent')
 @user.update(sent_thanks:'Not Sent')
 
-@user.update(unencrypted_password:@user.password.to_s)l
+@user.update(unencrypted_password:@user.password.to_s)
 
 @users = pagination
 
@@ -104,7 +104,7 @@ end
 
 end
 
-  @users = @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  @users = @subscription.users.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
 end
 
 
@@ -127,7 +127,7 @@ end
 
 def pagination
   @subscription = Subscription.find(params[:subscription_id])
-  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
 
     end
 
