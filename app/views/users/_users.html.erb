@@ -5,8 +5,9 @@
         <td> <%= user.gender %></td>
         <td><%= user.reg_no %></td>
         <td><%= user.phone_no %></td>
-        <th><%=user.sent_token%></th>
-        <th><%=user.sent_thanks%></th>
+        <td><%=user.has_voted%></td>
+        <td><%=user.sent_token%></td>
+        <td><%=user.sent_thanks%></td>
         <td><%= link_to subscription_user_path(@subscription,user),remote: true, class:'btn btn-success' do %>
             <span class="glyphicon glyphicon-plus"></span>
         <%end%>
