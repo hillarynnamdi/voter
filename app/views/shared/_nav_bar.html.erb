@@ -43,7 +43,7 @@
       <ul class="nav navbar-nav navbar-right">
 
          <li><%= link_to  destroy_admin_session_path , method: :delete do %>
-            <span class="glyphicon glyphicon-log-out"></span> Logout
+            <span class="glyphicon glyphicon-log-out"></span> Logout (<%= current_admin.email.split('@')[0] %>)
             <%end%>
         </li>
 

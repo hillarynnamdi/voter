@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   before_action :set_subscription, only: [:show, :edit, :update, :destroy, :delete]
   # GET /subscriptions
@@ -99,7 +99,7 @@ def send_smstoken
 @subscription = Subscription.find(params[:subscription_id])
         
 
- @subscription.users.where("sent_token !='PENDING'").each do |user|
+ @subscription.users.where("sent_token !='PENDING'and and has_voted=false ").each do |user|
 
  require 'json'
 uri = URI("https://api.infobip.com/sms/1/text/single")
