@@ -13,7 +13,7 @@ def create
 @user.update(sent_token:'Not Sent')
 @user.update(sent_thanks:'Not Sent')
 
-@user.update(unencrypted_password:@user.password.to_s)
+@user.update(unencrypted_password:@user.password.to_s)l
 
 @users = pagination
 
@@ -24,14 +24,14 @@ end
  
 
   def index
-  	@subscription = Subscription.find(params[:subscription_id])
-  	if params[:search]
-  	  @users =@subscription.users.where("first_name LIKE '#{params[:search]}%' or last_name LIKE '#{params[:search]}%' or phone_no LIKE '#{params[:search].to_s}%' or reg_no LIKE '#{params[:search].to_s}%'").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
-    
-    else
-   	 @users =pagination 
-  	 
-end
+	@subscription = Subscription.find(params[:subscription_id])
+	if params[:search]
+	  @users =@subscription.users.where("first_name LIKE '#{params[:search]}%' or last_name LIKE '#{params[:search]}%' or phone_no LIKE '#{params[:search].to_s}%' or reg_no LIKE '#{params[:search].to_s}%'").paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  
+  else
+ 	 @users =pagination 
+    	 
+  end
 
   end
 
@@ -127,7 +127,7 @@ end
 
 def pagination
   @subscription = Subscription.find(params[:subscription_id])
-  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
 
     end
 
