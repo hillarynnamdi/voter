@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
 	before_validation { self.first_name = first_name.upcase }
 	before_validation { self.last_name = last_name.upcase }
+	before_validation { self.reg_no = reg_no.upcase }
+
 	#before_save :downcase_password
 
 
