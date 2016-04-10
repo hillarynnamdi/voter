@@ -24,7 +24,7 @@ def create
 
 if @caster.save
 
-	
+
 	require 'json'
 	@user.update(has_voted:true)
 uri = URI("https://api.infobip.com/sms/1/text/single")
@@ -37,7 +37,7 @@ request["authorization"] = 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='
 request["content-type"] = 'application/json'
 request["accept"] = 'application/json'
 request.basic_auth 'chrisgeek', 'ifeanyi29'
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{current_user.phone_no}\",\"text\":\"Hi #{current_user.first_name},Thanks for voting! Your vote has been saved.\"}"
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{current_user.phone_no}\",\"text\":\"Hi #{current_user.first_name},Thanks for voting! Your vote has been saved. follow this link http://bit.ly/1N22Uju by 4pm today to view results.\"}"
 
 response = http.request request
 
