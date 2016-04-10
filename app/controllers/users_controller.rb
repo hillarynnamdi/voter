@@ -127,7 +127,7 @@ end
 
 def pagination
   @subscription = Subscription.find(params[:subscription_id])
-  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
+  @users ||= @subscription.users.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 
     end
 
