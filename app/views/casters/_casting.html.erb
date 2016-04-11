@@ -16,13 +16,20 @@
 <tr>
 <td>
 
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
-<%end%>
+<%end%></div>
+
+  <div class="col-sm-9">
 <%= aspirant.first_name%> <%=aspirant.last_name%>
    <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+</div>
+
+</div>
  </td>
  <td><div class="radio"> 
  <%= f.radio_button :president, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -47,13 +54,18 @@
 <%if aspirant.position=="SECRETARY GENERAL"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
-<%end%>
+<%end%></div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :secretary_general, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -83,13 +95,19 @@
 <%if aspirant.position=="VICE PRESIDENT"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "female.png",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio"> 
  <%= f.radio_button :vice_president, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -115,13 +133,19 @@
 <%if aspirant.position=="FINANCIAL SECRETARY"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :financial_secretary, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %> 
@@ -150,13 +174,19 @@
 <%if aspirant.position=="PRO"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :pro, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %> 
@@ -181,13 +211,19 @@
 <%if aspirant.position=="ASSISTANT SEC GEN"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "female.png",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio"> 
  <%= f.radio_button :asg, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -216,13 +252,19 @@
 <%if aspirant.position=="DIRECTOR OF WELFARE"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio"> 
  <%= f.radio_button :welfare, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %> 
@@ -247,13 +289,19 @@
 <%if aspirant.position=="DIRECTOR OF SPORTS" %>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :dos, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -282,13 +330,19 @@
 <%if aspirant.position=="PROVOST1"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio"> 
  <%= f.radio_button :firstprov, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -313,13 +367,19 @@
 <%if aspirant.position=="PROVOST2"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :secondprov, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -348,13 +408,19 @@
 <%if aspirant.position=="TREASURER"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "female.png",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :treasurer, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>
@@ -379,13 +445,19 @@
 <%if aspirant.position=="DIRECTOR OF SOCIALS"%>
 <tr>
 <td>
+<div class="row">
+  <div class="col-sm-3">
 <%if aspirant.image? %>
 <%= image_tag aspirant.image_url(),class:"img-thumbnail",width:"100", height:"80"%>
 <%else%>
 <%=image_tag "male.jpg",class:"img-thumbnail",width:"100", height:"80" %>
 <%end%>
+</div>
+  <div class="col-sm-9">
  <%= aspirant.first_name%> <%=aspirant.last_name%>
  <span class="glyphicon glyphicon-tag" style='color:#74b6be'> </span> <%=aspirant.level%>
+ </div>
+ </div>
  </td>
  <td><div class="radio">
   <%= f.radio_button :dosocial, aspirant.first_name+" "+aspirant.last_name,class:'bigradio' %>

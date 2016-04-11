@@ -2,7 +2,7 @@
 
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#evoter">E-Voting</a></li>
+  <li class="active"><a data-toggle="tab" href="#evoter">TeleVoter-Login</a></li>
 </ul>
 
 <div class="tab-content">
@@ -25,8 +25,8 @@
 <%end%>
 
   <div class="form-inputs">
-   <div class='text_login'><span class="glyphicon glyphicon-user"></span> Reg or Phone Number</div>
-    <%= f.text_field :reg_no,class: "form-control",placeholder:"e.g 20111778000 or +23480333XXXX",required: true, autofocus: true %>
+   <div class='text_login'><span class="glyphicon glyphicon-user"></span> Reg or <span class="glyphicon glyphicon-call"></span> Phone Number</div>
+    <%= f.text_field :reg_no,class: "form-control",placeholder:"e.g 20111778000 or mobile",required: true, autofocus: true %>
     </div>
   <div class="form-inputs">
   <div class='text_login'><span class="glyphicon glyphicon-lock"></span> Password</div>
