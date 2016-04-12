@@ -114,7 +114,7 @@ request["accept"] = 'application/json'
 request.basic_auth 'chrisgeek', 'ifeanyi29'
 @generated=Devise.friendly_token.first(8)
 
-request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{user.phone_no}\",\"text\":\"Hi #{user.first_name},Your NACOSS E-voting Username is #{user.reg_no} & Password is #{@generated.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
+request.body = "{\"from\":\"NACOSS ISEC\",\"to\":\"#{user.phone_no}\",\"text\":\"Hi #{user.first_name},Your NACOSS E-voting Password is #{@generated.to_s},follow this link to vote bit.ly/1RT5K9x\"}"
 
 response = http.request request
 
