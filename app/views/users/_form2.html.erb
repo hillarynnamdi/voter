@@ -47,6 +47,7 @@
 
 
 
+<div class='check_uncheck'>
  <div class="form-group">
  <div class="row">
   <div class="col-sm-4">
@@ -56,14 +57,21 @@
       <div class="col-sm-4">     <div id='acct_style'><span class="glyphicon envelope"></span> Resend SMS Thanks 
           <%=radio_button_tag 'sms', 'thanks'%></div> </div>
 <div class="col-sm-4">
-          ( <a href='#'  id='reset_bt'>Uncheck</a> ) </div>
+          ( <a href='#'  id='reset_bt2'>Uncheck</a> ) </div>
 
 </div>
 </div>
+</div>
 
 
-        Admin
-        </button>
+       <div class="modal-footer">
+        <%= f.submit class: "btn btn-primary", id:'submit_bts' %>
+        <%= button_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
+
+      <button class='pass_key'>#</button>
+     <%= f.hidden_field :unencrypted_password,class: "btn btn-primary",id:'pass_key_value' %>
+
 
       </div>
     <% end %>

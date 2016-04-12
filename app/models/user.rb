@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
 	validates :last_name, length: {minimum:3} ,if: "last_name.present?"
 	validates :last_name, length: {maximum:100} ,if: "last_name.present?"
 
-	#validates :reg_no, presence: true
+	validates :reg_no, presence: true
 	validates :reg_no, length: {minimum:10} ,if: "reg_no.present?"
-	validates :reg_no, length: {maximum:11} ,if: "reg_no.present?"
+	validates :reg_no, length: {maximum:15} ,if: "reg_no.present?"
 	validates :reg_no, uniqueness: {case_sensitive:false} ,if: "reg_no.present?"
 
 	validates :phone_no, presence: true

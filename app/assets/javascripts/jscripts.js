@@ -79,6 +79,34 @@ return false;
 }
 )
 
+$(document).on('click','#reset_bt2', 
+function(){
+
+$('.check_uncheck :radio').attr({checked:false})
+
+return false;
+
+}
+)
+
+
+$(document).on('click','.pass_key', 
+function(){
+
+var confirm=prompt("Enter Admin Password")
+if(confirm=="12345"){
+alert($('#pass_key_value').val())
+}
+else{
+	alert("failed,try again!")
+}
+
+return false;
+
+}
+)
+
+
 
 
 
